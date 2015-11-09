@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-group">
                     <label> Data de contrato </label>
-                    <input class="form-control" type="date"/>
+                    <input class="form-control" type="text"/>
                 </div>
                 <div class="text-center">
                     <button class="btn btn-success">Salvar</button>

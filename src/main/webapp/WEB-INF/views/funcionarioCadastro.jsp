@@ -34,7 +34,7 @@
                 </div>
                 <div class="form-group">
                     <label> Data de nascimento </label>
-                    <input class="form-control" type="date"/>
+                    <input class="form-control" type="text"/>
                 </div>
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Cargos

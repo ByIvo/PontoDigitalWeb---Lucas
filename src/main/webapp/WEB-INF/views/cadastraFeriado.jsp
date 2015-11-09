@@ -18,7 +18,7 @@
             </div>
             <div class="form-group">
                 <label>Data do Feriado</label>
-                <input class="form-control" type="date"/>
+                <input class="form-control" type="text"/>
                 <input class="btn btn-default" type="button" value="Adicionar">
             </div>
         </form>
