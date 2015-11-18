@@ -1,83 +1,110 @@
 package br.com.pontowebdigital.model;
 
-import br.com.pontowebdigital.interfaces.Entidade;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-public class Cargo implements Entidade {
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Table(name = "cargos")
+@SQLDelete(sql = "UPDATE cargos SET deleted = 1 WHERE id = ?")
+@Where(clause = "deleted <> 1")
+public class Cargo extends Entidade
+{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column
+	private Integer id;
 	
-	private Integer id;	
+	@Column(length=80, nullable=false)
 	private String nome;
-	private double horasMensais;
 	
-	public Cargo() {
+	@Column(nullable=false)
+	private Double horasMensais;
+	
+	@Column()
+	@JsonIgnore
+	private boolean deleted = false;
+	
+	public Cargo()
+	{
 	}
-
-	public Cargo(Integer id, String nome, double horasMensais) {
+	
+	public Cargo(Integer id, String nome, double horasMensais)
+	{
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.horasMensais = horasMensais;
 	}
 	
-	public Cargo(Integer id) {
+	public Cargo(Integer id)
+	{
 		super();
 		this.id = id;
 	}
-
+	
 	@Override
-	public Integer getId() {
+	public Integer getId()
+	{
 		return id;
 	}
-
+	
 	@Override
-	public void setId(Integer id) {
+	public void setId(Integer id)
+	{
 		this.id = id;
 	}
-
-	public String getNome() {
+	
+	@Override
+	public boolean isDeleted()
+	{
+		return deleted;
+	}
+	
+	@Override
+	public void setDeleted(boolean deleted)
+	{
+		this.deleted = deleted;
+	}
+	
+	public String getNome()
+	{
 		return nome;
 	}
-
-	public void setNome(String nome) {
+	
+	public void setNome(String nome)
+	{
 		this.nome = nome;
 	}
-
-	public double getHorasMensais() {
+	
+	public Double getHorasMensais()
+	{
 		return horasMensais;
 	}
-
-	public void setHorasMensais(double horasMensais) {
+	
+	public void setHorasMensais(double horasMensais)
+	{
 		this.horasMensais = horasMensais;
 	}
-
+	
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Cargo other = (Cargo) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
+	public String toString()
+	{
+		return "Cargo [id=" + id + ", nome=" + nome + ", horasMensais=" + horasMensais + ", deleted=" + deleted + "]";
 	}
 	
 }

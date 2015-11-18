@@ -2,9 +2,7 @@ package br.com.pontowebdigital.model;
 
 import java.util.Date;
 
-import br.com.pontowebdigital.interfaces.Entidade;
-
-public class Contrato implements Entidade {
+public class Contrato extends Entidade {
 
 	/**
 	 * 
@@ -15,6 +13,13 @@ public class Contrato implements Entidade {
 	private double salario;
 	private Date dataContrato;
 	private Funcionario funcionario;
+	
+	private boolean deleted = false;
+	
+	
+	public Contrato()
+	{
+	}
 
 	public Contrato(Integer id, double horasMensais, double salario, Date dataContrato, Funcionario funcionario) {
 		super();
@@ -38,9 +43,20 @@ public class Contrato implements Entidade {
 	@Override
 	public void setId(Integer id) {
 		this.id = id;
-
 	}
 
+	@Override
+	public boolean isDeleted()
+	{
+		return deleted;
+	}
+
+	@Override
+	public void setDeleted(boolean deleted)
+	{
+		this.deleted = deleted;
+	}
+	
 	public double getHorasMensais() {
 		return horasMensais;
 	}
@@ -71,56 +87,6 @@ public class Contrato implements Entidade {
 
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((dataContrato == null) ? 0 : dataContrato.hashCode());
-		result = prime * result + ((funcionario == null) ? 0 : funcionario.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(horasMensais);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		temp = Double.doubleToLongBits(salario);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Contrato other = (Contrato) obj;
-		if (dataContrato == null) {
-			if (other.dataContrato != null)
-				return false;
-		} else if (!dataContrato.equals(other.dataContrato))
-			return false;
-		if (funcionario == null) {
-			if (other.funcionario != null)
-				return false;
-		} else if (!funcionario.equals(other.funcionario))
-			return false;
-		if (Double.doubleToLongBits(horasMensais) != Double.doubleToLongBits(other.horasMensais))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (Double.doubleToLongBits(salario) != Double.doubleToLongBits(other.salario))
-			return false;
-		return true;
 	}
 
 	@Override
