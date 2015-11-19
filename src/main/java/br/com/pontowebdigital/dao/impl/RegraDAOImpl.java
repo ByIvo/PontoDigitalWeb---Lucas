@@ -2,18 +2,18 @@ package br.com.pontowebdigital.dao.impl;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import br.com.pontowebdigital.dao.CargoDAO;
+import br.com.pontowebdigital.dao.RegraDAO;
 import br.com.pontowebdigital.dao.GenericDAO;
-import br.com.pontowebdigital.model.Cargo;
+import br.com.pontowebdigital.model.Regra;
 
 @Repository
 @Transactional
-public class CargoDAOImpl extends GenericDAO<Cargo, Integer> implements CargoDAO
+public class RegraDAOImpl extends GenericDAO<Regra, Integer> implements RegraDAO
 {
 	
-	public CargoDAOImpl()
+	public RegraDAOImpl()
 	{
-		super(Cargo.class);
+		super(Regra.class);
 	}
 	
 	
