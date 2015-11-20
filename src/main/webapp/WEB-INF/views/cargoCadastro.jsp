@@ -17,24 +17,21 @@
 		<div class="page-header">
 			<h1>Cadastro de Cargos</h1>
 		</div>
-		<f:form method="POST"  action="cadastro" modelAttribute="cargo">
+		<form>
 			<div class="form-group">
-				<f:label path="id">ID</f:label>
-				<f:input path="id"/>
+				<label>ID</label> <input />
 			</div>
 			<div class="form-group">
-				<f:label path="nome"> Nome do cargo </f:label>
-				<f:input path="nome"/>
+				<label> Nome do cargo </label> <input />
 			</div>
 			<div class="form-group">
-				<f:label path="horasMensais"> Horas Mensais </f:label>
-				<f:input path="horasMensais"/>
+				<label> Horas Mensais </label> <input>
 			</div>
 
 			<div class="text-center">
 				<button class="command" type="submit">CADASTRAR</button>
 			</div>
-		</f:form>
+		</form>
 	</div>
 </body>
 </html>
