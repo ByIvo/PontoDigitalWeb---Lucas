@@ -1,18 +1,32 @@
 package br.com.pontowebdigital.model;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Regra extends Entidade {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column
 	private Integer id;
+	@Column
 	private Tdia tipoDia;
+	@Column
 	private double valor;
+	@Column
 	private double procentagemHoraExtra;
+	@Column
 	private double horasTrabalho;
-	
+	@Column
+	@JsonIgnore
 	private boolean deleted = false;
 
 	

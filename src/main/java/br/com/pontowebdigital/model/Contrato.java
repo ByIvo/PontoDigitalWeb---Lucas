@@ -2,23 +2,36 @@ package br.com.pontowebdigital.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Contrato extends Entidade {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column
 	private Integer id;
+	@Column
 	private double horasMensais;
+	@Column
 	private double salario;
+	@Column
 	private Date dataContrato;
+	@Column
 	private Funcionario funcionario;
-	
+	@Column
+	@JsonIgnore
 	private boolean deleted = false;
-	
-	
-	public Contrato()
-	{
+
+	public Contrato() {
 	}
 
 	public Contrato(Integer id, double horasMensais, double salario, Date dataContrato, Funcionario funcionario) {
@@ -46,17 +59,15 @@ public class Contrato extends Entidade {
 	}
 
 	@Override
-	public boolean isDeleted()
-	{
+	public boolean isDeleted() {
 		return deleted;
 	}
 
 	@Override
-	public void setDeleted(boolean deleted)
-	{
+	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
 	}
-	
+
 	public double getHorasMensais() {
 		return horasMensais;
 	}

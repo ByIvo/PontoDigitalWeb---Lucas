@@ -2,6 +2,13 @@ package br.com.pontowebdigital.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Funcionario extends Entidade
 {
 	
@@ -9,17 +16,30 @@ public class Funcionario extends Entidade
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column
 	private Integer id;
+	@Column
 	private String nome;
+	@Column
 	private String cpf;
+	@Column
 	private String rg;
+	@Column
 	private Cargo cargo;
+	@Column
 	private Contrato contratoAtual;
+	@Column
 	private List<Contrato> listaContratos;
+	@Column
 	private String email;
+	@Column
 	private String senha;
+	@Column
 	private RegraTrabalho regraTrabalho;
-	
+	@Column
+	@JsonIgnore
 	private boolean deleted = false;
 	
 	public Funcionario()

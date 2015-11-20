@@ -10,17 +10,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form class="form">
-            <div class="page-header">
-                <h1>
-                    Cadastro de Feriados
-                </h1>                
-            </div>
-            <div class="form-group">
-                <label>Data do Feriado</label>
-                <input class="form-control" type="text"/>
-                <input class="btn btn-default" type="button" value="Adicionar">
-            </div>
-        </form>
+	<form class="form">
+	            <div class="page-header">
+	                <h1>
+	                    Cadastro de Feriados
+	                </h1>                
+	            </div>
+	            <div class="form-group">
+	                <label>Data do Feriado</label>
+	                <input class="form-control" type="text"/>
+	                <input class="btn btn-default" type="button" value="Adicionar">
+	            </div>
+	        </form>
 </body>
 </html>

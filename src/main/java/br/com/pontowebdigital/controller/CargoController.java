@@ -35,7 +35,7 @@ public class CargoController
 		entity = service.saveOrUpdate(entity);
 		return entity;
 	}
-	
+		
 	@ResponseBody
 	@RequestMapping(method = { RequestMethod.POST })
 	public Cargo deleteEntity(@ModelAttribute("cargo") Cargo entity)
