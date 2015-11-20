@@ -22,14 +22,14 @@ public class CargoController
 	private CargoService service;
 	
 	@ResponseBody
-	@RequestMapping(method = { RequestMethod.GET })
+	@RequestMapping(value="/",method = { RequestMethod.GET })
 	public List<Cargo> findAll()
 	{
 		return service.findAll();
 	}
 	
 	@ResponseBody
-	@RequestMapping(method = { RequestMethod.POST })
+	@RequestMapping(value="/add", method = { RequestMethod.POST })
 	public Cargo addEntity(@ModelAttribute("cargo") Cargo entity)
 	{
 		entity = service.saveOrUpdate(entity);
