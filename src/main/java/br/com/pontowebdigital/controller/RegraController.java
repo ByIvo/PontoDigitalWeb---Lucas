@@ -14,7 +14,7 @@ import br.com.pontowebdigital.model.Regra;
 import br.com.pontowebdigital.service.RegraService;
 
 @Controller
-@RequestMapping("admin/Regras")
+@RequestMapping("admin/regras")
 public class RegraController
 {
 	
@@ -30,7 +30,7 @@ public class RegraController
 	
 	@ResponseBody
 	@RequestMapping(value="/add", method = { RequestMethod.POST })
-	public Regra addEntity(@ModelAttribute("Regra") Regra entity)
+	public Regra addEntity(@ModelAttribute("regra") Regra entity)
 	{
 		entity = service.saveOrUpdate(entity);
 		return entity;
@@ -38,7 +38,7 @@ public class RegraController
 		
 	@ResponseBody
 	@RequestMapping(method = { RequestMethod.POST })
-	public Regra deleteEntity(@ModelAttribute("Regra") Regra entity)
+	public Regra deleteEntity(@ModelAttribute("regra") Regra entity)
 	{
 		service.remove(entity);
 		

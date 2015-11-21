@@ -14,7 +14,7 @@ import br.com.pontowebdigital.model.Ponto;
 import br.com.pontowebdigital.service.PontoService;
 
 @Controller
-@RequestMapping("admin/Pontos")
+@RequestMapping("admin/pontos")
 public class PontoController
 {
 	
@@ -30,7 +30,7 @@ public class PontoController
 	
 	@ResponseBody
 	@RequestMapping(value="/add", method = { RequestMethod.POST })
-	public Ponto addEntity(@ModelAttribute("Ponto") Ponto entity)
+	public Ponto addEntity(@ModelAttribute("ponto") Ponto entity)
 	{
 		entity = service.saveOrUpdate(entity);
 		return entity;
@@ -38,7 +38,7 @@ public class PontoController
 		
 	@ResponseBody
 	@RequestMapping(method = { RequestMethod.POST })
-	public Ponto deleteEntity(@ModelAttribute("Ponto") Ponto entity)
+	public Ponto deleteEntity(@ModelAttribute("ponto") Ponto entity)
 	{
 		service.remove(entity);
 		

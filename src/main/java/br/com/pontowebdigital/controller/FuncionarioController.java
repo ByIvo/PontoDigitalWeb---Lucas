@@ -14,7 +14,7 @@ import br.com.pontowebdigital.model.Funcionario;
 import br.com.pontowebdigital.service.FuncionarioService;
 
 @Controller
-@RequestMapping("admin/Funcionarios")
+@RequestMapping("admin/funcionarios")
 public class FuncionarioController
 {
 	
@@ -30,7 +30,7 @@ public class FuncionarioController
 	
 	@ResponseBody
 	@RequestMapping(value="/add", method = { RequestMethod.POST })
-	public Funcionario addEntity(@ModelAttribute("Funcionario") Funcionario entity)
+	public Funcionario addEntity(@ModelAttribute("funcionario") Funcionario entity)
 	{
 		entity = service.saveOrUpdate(entity);
 		return entity;
@@ -38,7 +38,7 @@ public class FuncionarioController
 		
 	@ResponseBody
 	@RequestMapping(method = { RequestMethod.POST })
-	public Funcionario deleteEntity(@ModelAttribute("Funcionario") Funcionario entity)
+	public Funcionario deleteEntity(@ModelAttribute("funcionario") Funcionario entity)
 	{
 		service.remove(entity);
 		

@@ -1,12 +1,20 @@
 package br.com.pontowebdigital.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+@Entity
+@Table(name = "regras_trabalho")
+@SQLDelete(sql = "UPDATE cargos SET deleted = 1 WHERE id = ?")
+@Where(clause = "deleted <> 1")
 public class RegraTrabalho extends Entidade{
 	
 	/**
