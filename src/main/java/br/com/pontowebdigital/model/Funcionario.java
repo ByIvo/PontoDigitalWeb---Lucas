@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,13 +15,13 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "funcionarios")
 @SQLDelete(sql = "UPDATE cargos SET deleted = 1 WHERE id = ?")
 @Where(clause = "deleted <> 1")
-public class Funcionario extends Entidade
-{
-	
+public class Funcionario extends Entidade {
+
 	/**
 	 * 
 	 */
@@ -40,8 +41,7 @@ public class Funcionario extends Entidade
 	@Column
 	private Contrato contratoAtual;
 	@Column
-	@OneToMany(targetEntity=Contrato.class)
-	//fetch=FetchType.EAGER
+	@OneToMany(targetEntity = Contrato.class, fetch = FetchType.EAGER)
 	private List<Contrato> listaContratos;
 	@Column
 	private String email;
@@ -52,19 +52,17 @@ public class Funcionario extends Entidade
 	@Column
 	@JsonIgnore
 	private boolean deleted = false;
-	
-	public Funcionario()
-	{
+
+	public Funcionario() {
 	}
-	
-	public Funcionario(Integer id)
-	{
+
+	public Funcionario(Integer id) {
 		super();
 		this.id = id;
 	}
-	
-	public Funcionario(Integer id, String nome, String cpf, String rg, Cargo cargo, Contrato contratoAtual, List<Contrato> listaContratos, String email, String senha, RegraTrabalho regraTrabalho)
-	{
+
+	public Funcionario(Integer id, String nome, String cpf, String rg, Cargo cargo, Contrato contratoAtual,
+			List<Contrato> listaContratos, String email, String senha, RegraTrabalho regraTrabalho) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -77,125 +75,104 @@ public class Funcionario extends Entidade
 		this.senha = senha;
 		this.regraTrabalho = regraTrabalho;
 	}
-	
+
 	@Override
-	public Integer getId()
-	{
+	public Integer getId() {
 		return id;
 	}
-	
+
 	@Override
-	public void setId(Integer id)
-	{
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	@Override
-	public boolean isDeleted()
-	{
+	public boolean isDeleted() {
 		return deleted;
 	}
-	
+
 	@Override
-	public void setDeleted(boolean deleted)
-	{
+	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
 	}
-	
-	public String getNome()
-	{
+
+	public String getNome() {
 		return nome;
 	}
-	
-	public void setNome(String nome)
-	{
+
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	public String getCpf()
-	{
+
+	public String getCpf() {
 		return cpf;
 	}
-	
-	public void setCpf(String cpf)
-	{
+
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	
-	public String getRg()
-	{
+
+	public String getRg() {
 		return rg;
 	}
-	
-	public void setRg(String rg)
-	{
+
+	public void setRg(String rg) {
 		this.rg = rg;
 	}
-	
-	public Cargo getCargo()
-	{
+
+	public Cargo getCargo() {
 		return cargo;
 	}
-	
-	public void setCargo(Cargo cargo)
-	{
+
+	public void setCargo(Cargo cargo) {
 		this.cargo = cargo;
 	}
-	
-	public Contrato getContratoAtual()
-	{
+
+	public Contrato getContratoAtual() {
 		return contratoAtual;
 	}
-	
-	public void setContratoAtual(Contrato contratoAtual)
-	{
+
+	public void setContratoAtual(Contrato contratoAtual) {
 		this.contratoAtual = contratoAtual;
 	}
-	
-	public List<Contrato> getListaContratos()
-	{
+
+	public List<Contrato> getListaContratos() {
 		return listaContratos;
 	}
-	
-	public void setListaContratos(List<Contrato> listaContratos)
-	{
+
+	public void setListaContratos(List<Contrato> listaContratos) {
 		this.listaContratos = listaContratos;
 	}
-	
-	public String getEmail()
-	{
+
+	public String getEmail() {
 		return email;
 	}
-	
-	public void setEmail(String email)
-	{
+
+	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	public String getSenha()
-	{
+
+	public String getSenha() {
 		return senha;
 	}
-	
-	public void setSenha(String senha)
-	{
+
+	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	public RegraTrabalho getRegraTrabalho()
-	{
+
+	public RegraTrabalho getRegraTrabalho() {
 		return regraTrabalho;
 	}
-	
-	public void setRegraTrabalho(RegraTrabalho regraTrabalho)
-	{
+
+	public void setRegraTrabalho(RegraTrabalho regraTrabalho) {
 		this.regraTrabalho = regraTrabalho;
 	}
-	
+
 	@Override
-	public String toString()
-	{
-		return "Funcionario [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", cargo=" + cargo + ", contratoAtual=" + contratoAtual + ", listaContratos=" + listaContratos + ", email=" + email + ", senha=" + senha + ", regraTrabalho=" + regraTrabalho + "]";
+	public String toString() {
+		return "Funcionario [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", cargo=" + cargo
+				+ ", contratoAtual=" + contratoAtual + ", listaContratos=" + listaContratos + ", email=" + email
+				+ ", senha=" + senha + ", regraTrabalho=" + regraTrabalho + "]";
 	}
-	
+
 }
