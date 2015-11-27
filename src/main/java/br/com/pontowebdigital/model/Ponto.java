@@ -7,7 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -29,12 +33,16 @@ public class Ponto extends Entidade
 	@Column
 	private Integer id;
 	@Column
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date entrada;
 	@Column
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date saida;
-	@Column
+	@ManyToOne
+	@JoinColumn(name = "contrato_id", referencedColumnName="id", nullable = true)
 	private Contrato contrato;
-	@Column
+	@ManyToOne
+	@JoinColumn(name = "funcionario_id", referencedColumnName="id", nullable = true)
 	private Funcionario funcionario;
 	@Column
 	@JsonIgnore

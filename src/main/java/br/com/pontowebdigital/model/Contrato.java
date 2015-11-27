@@ -7,7 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -27,13 +31,15 @@ public class Contrato extends Entidade {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
 	private Integer id;
-	@Column
+	@Column(nullable=false)
 	private double horasMensais;
-	@Column
+	@Column(nullable=false)
 	private double salario;
-	@Column
+	@Column(nullable=false)
+	@Temporal(TemporalType.DATE)
 	private Date dataContrato;
-	@Column
+	@ManyToOne
+	@JoinColumn(name = "funcionario_id", referencedColumnName="id", nullable = true)
 	private Funcionario funcionario;
 	@Column
 	@JsonIgnore

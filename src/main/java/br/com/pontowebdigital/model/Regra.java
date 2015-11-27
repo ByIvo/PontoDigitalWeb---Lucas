@@ -2,9 +2,13 @@ package br.com.pontowebdigital.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.SQLDelete;
@@ -25,17 +29,21 @@ public class Regra extends Entidade {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
 	private Integer id;
-	@Column
+	@Enumerated(EnumType.STRING)
+	@Column(name = "t_dia")
 	private Tdia tipoDia;
-	@Column
+	@Column(nullable=false)
 	private double valor;
-	@Column
+	@Column(nullable=false)
 	private double procentagemHoraExtra;
-	@Column
+	@Column(nullable=false)
 	private double horasTrabalho;
 	@Column
 	@JsonIgnore
 	private boolean deleted = false;
+	@ManyToOne
+	@JoinColumn(name = "regra_trabalho_id", referencedColumnName="id", nullable = true)
+	private RegraTrabalho regraTrabalho;
 
 	
 	public Regra()
@@ -47,13 +55,14 @@ public class Regra extends Entidade {
 		this.id = id;
 	}
 
-	public Regra(Integer id, Tdia tipoDia, double valor, double procentagemHoraExtra, double horasTrabalho) {
+	public Regra(Integer id, Tdia tipoDia, double valor, double procentagemHoraExtra, double horasTrabalho, RegraTrabalho regraTrabalho) {
 		super();
 		this.id = id;
 		this.tipoDia = tipoDia;
 		this.valor = valor;
 		this.procentagemHoraExtra = procentagemHoraExtra;
 		this.horasTrabalho = horasTrabalho;
+		this.regraTrabalho = regraTrabalho;
 	}
 
 	@Override
@@ -109,11 +118,21 @@ public class Regra extends Entidade {
 	public void setHorasTrabalho(double horasTrabalho) {
 		this.horasTrabalho = horasTrabalho;
 	}
+	
+
+	public RegraTrabalho getRegraTrabalho() {
+		return regraTrabalho;
+	}
+
+	public void setRegraTrabalho(RegraTrabalho regraTrabalho) {
+		this.regraTrabalho = regraTrabalho;
+	}
 
 	@Override
 	public String toString() {
 		return "Regra [id=" + id + ", tipoDia=" + tipoDia + ", valor=" + valor + ", procentagemHoraExtra="
-				+ procentagemHoraExtra + ", horasTrabalho=" + horasTrabalho + "]";
+				+ procentagemHoraExtra + ", horasTrabalho=" + horasTrabalho + ", deleted=" + deleted
+				+ ", regraTrabalho=" + regraTrabalho + "]";
 	}
 
 	

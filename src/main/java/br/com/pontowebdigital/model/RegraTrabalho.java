@@ -25,7 +25,7 @@ public class RegraTrabalho extends Entidade{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
 	private Integer id;
-	@Column
+	@Column(nullable=false)
 	private String nome;
 	@Column
 	@JsonIgnore

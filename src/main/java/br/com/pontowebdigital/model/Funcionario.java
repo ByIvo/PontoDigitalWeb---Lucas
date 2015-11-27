@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -30,24 +32,27 @@ public class Funcionario extends Entidade {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
 	private Integer id;
-	@Column
+	@Column(nullable = false)
 	private String nome;
-	@Column
+	@Column(nullable=false, unique=true)
 	private String cpf;
-	@Column
+	@Column(nullable=false, unique=true)
 	private String rg;
-	@Column
+	@ManyToOne
+	@JoinColumn(name = "cargo_id", referencedColumnName="id", nullable = true)
 	private Cargo cargo;
-	@Column
+	@ManyToOne
+	@JoinColumn(name = "contrato_atual_id", referencedColumnName="id", nullable = true)
 	private Contrato contratoAtual;
 	@Column
 	@OneToMany(targetEntity = Contrato.class, fetch = FetchType.EAGER)
 	private List<Contrato> listaContratos;
-	@Column
+	@Column(nullable=false, unique=true)
 	private String email;
-	@Column
+	@Column(nullable=false)
 	private String senha;
-	@Column
+	@ManyToOne
+	@JoinColumn(name = "regra_trabalho_id", referencedColumnName="id", nullable = true)
 	private RegraTrabalho regraTrabalho;
 	@Column
 	@JsonIgnore
@@ -166,6 +171,9 @@ public class Funcionario extends Entidade {
 
 	public void setRegraTrabalho(RegraTrabalho regraTrabalho) {
 		this.regraTrabalho = regraTrabalho;
+	}
+	public void setSenhaEncriptada(String plainSenha){
+		
 	}
 
 	@Override

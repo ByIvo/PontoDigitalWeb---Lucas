@@ -14,7 +14,7 @@ import br.com.pontowebdigital.model.Contrato;
 import br.com.pontowebdigital.service.ContratoService;
 
 @Controller
-@RequestMapping("admin/Contratos")
+@RequestMapping("admin/contratos")
 public class ContratoController
 {
 	
