@@ -29,7 +29,7 @@ public class ContratoController
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/add", method = { RequestMethod.POST })
+	@RequestMapping(value="/", method = { RequestMethod.POST })
 	public Contrato addEntity(@ModelAttribute("contrato") Contrato entity)
 	{
 		entity = service.saveOrUpdate(entity);

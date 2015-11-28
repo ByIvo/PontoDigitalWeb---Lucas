@@ -29,7 +29,7 @@ public class PontoController
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/add", method = { RequestMethod.POST })
+	@RequestMapping(value="/", method = { RequestMethod.POST })
 	public Ponto addEntity(@ModelAttribute("ponto") Ponto entity)
 	{
 		entity = service.saveOrUpdate(entity);

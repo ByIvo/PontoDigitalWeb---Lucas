@@ -35,9 +35,14 @@ public class Cargo extends Entidade
 	@Column(nullable=false)
 	private Double horasMensais;
 	
+	//saber quantas horas ele trabalha por dia normal; qualquer coisa fora disso deve ser incluido na regra de trabalho
+	@Column(nullable=true)
+	private Double padraoHorasDiaTrabalho;
+	
 	@Column()
 	@JsonIgnore
 	private boolean deleted = false;
+	
 	
 	public Cargo()
 	{
@@ -91,16 +96,23 @@ public class Cargo extends Entidade
 		this.nome = nome;
 	}
 	
-	public Double getHorasMensais()
-	{
+	
+	public Double getHorasMensais() {
 		return horasMensais;
 	}
-	
-	public void setHorasMensais(double horasMensais)
-	{
+
+	public void setHorasMensais(Double horasMensais) {
 		this.horasMensais = horasMensais;
 	}
-	
+
+	public Double getPadraoHorasDiaTrabalho() {
+		return padraoHorasDiaTrabalho;
+	}
+
+	public void setPadraoHorasDiaTrabalho(Double padraoHorasDiaTrabalho) {
+		this.padraoHorasDiaTrabalho = padraoHorasDiaTrabalho;
+	}
+
 	@Override
 	public String toString()
 	{

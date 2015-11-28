@@ -29,7 +29,7 @@ public class RegraTrabalhoController
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/add", method = { RequestMethod.POST })
+	@RequestMapping(value="/", method = { RequestMethod.POST })
 	public RegraTrabalho addEntity(@ModelAttribute("regraTrabalho") RegraTrabalho entity)
 	{
 		entity = service.saveOrUpdate(entity);

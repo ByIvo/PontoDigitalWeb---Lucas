@@ -29,7 +29,7 @@ public class FuncionarioController
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/add", method = { RequestMethod.POST })
+	@RequestMapping(value="/", method = { RequestMethod.POST })
 	public Funcionario addEntity(@ModelAttribute("funcionario") Funcionario entity)
 	{
 		entity = service.saveOrUpdate(entity);

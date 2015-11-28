@@ -29,7 +29,7 @@ public class RegraController
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/add", method = { RequestMethod.POST })
+	@RequestMapping(value="/", method = { RequestMethod.POST })
 	public Regra addEntity(@ModelAttribute("regra") Regra entity)
 	{
 		entity = service.saveOrUpdate(entity);

@@ -35,7 +35,7 @@ public class Regra extends Entidade {
 	@Column(nullable=false)
 	private double valor;
 	@Column(nullable=false)
-	private double procentagemHoraExtra;
+	private double porcentagemHoraExtra;
 	@Column(nullable=false)
 	private double horasTrabalho;
 	@Column
@@ -55,12 +55,12 @@ public class Regra extends Entidade {
 		this.id = id;
 	}
 
-	public Regra(Integer id, Tdia tipoDia, double valor, double procentagemHoraExtra, double horasTrabalho, RegraTrabalho regraTrabalho) {
+	public Regra(Integer id, Tdia tipoDia, double valor, double porcentagemHoraExtra, double horasTrabalho, RegraTrabalho regraTrabalho) {
 		super();
 		this.id = id;
 		this.tipoDia = tipoDia;
 		this.valor = valor;
-		this.procentagemHoraExtra = procentagemHoraExtra;
+		this.porcentagemHoraExtra = porcentagemHoraExtra;
 		this.horasTrabalho = horasTrabalho;
 		this.regraTrabalho = regraTrabalho;
 	}
@@ -103,12 +103,12 @@ public class Regra extends Entidade {
 		this.valor = valor;
 	}
 
-	public double getProcentagemHoraExtra() {
-		return procentagemHoraExtra;
+	public double getporcentagemHoraExtra() {
+		return porcentagemHoraExtra;
 	}
 
-	public void setProcentagemHoraExtra(double procentagemHoraExtra) {
-		this.procentagemHoraExtra = procentagemHoraExtra;
+	public void setporcentagemHoraExtra(double porcentagemHoraExtra) {
+		this.porcentagemHoraExtra = porcentagemHoraExtra;
 	}
 
 	public double getHorasTrabalho() {
@@ -130,8 +130,8 @@ public class Regra extends Entidade {
 
 	@Override
 	public String toString() {
-		return "Regra [id=" + id + ", tipoDia=" + tipoDia + ", valor=" + valor + ", procentagemHoraExtra="
-				+ procentagemHoraExtra + ", horasTrabalho=" + horasTrabalho + ", deleted=" + deleted
+		return "Regra [id=" + id + ", tipoDia=" + tipoDia + ", valor=" + valor + ", porcentagemHoraExtra="
+				+ porcentagemHoraExtra + ", horasTrabalho=" + horasTrabalho + ", deleted=" + deleted
 				+ ", regraTrabalho=" + regraTrabalho + "]";
 	}
 

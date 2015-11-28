@@ -29,7 +29,7 @@ public class CargoController
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/add", method = { RequestMethod.POST })
+	@RequestMapping(value="/", method = { RequestMethod.POST })
 	public Cargo addEntity(@ModelAttribute("cargo") Cargo entity)
 	{
 		entity = service.saveOrUpdate(entity);
