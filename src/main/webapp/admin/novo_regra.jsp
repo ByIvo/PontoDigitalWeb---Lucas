@@ -24,7 +24,7 @@
 			</div>
 			
 			<div class="form-group">
-				<label for="valor">Valors:</label> <input type="text"
+				<label for="valor">Valor:</label> <input type="text"
 					class="form-control" name="valor" id="valor"
 					placeholder="Valor" />
 			</div>
@@ -43,8 +43,9 @@
 			
 			<div class="form-group">
 				<label for="description">Regras de Trabalho:</label> 
-				<select class="form-control" name="regraTrabalho" id="regraTrabalho">
-				</select>
+				<input type="text"
+					class="form-control" name="regraTrabalho" id="regraTrabalho"
+					placeholder="Regra de Trabalho" />
 			</div>
 
 			<div class="form-group text-center">

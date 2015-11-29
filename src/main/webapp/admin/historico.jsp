@@ -1,25 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="models/start_page.jsp"%>
-<%@include file="models/header_admin.jsp"%>
+<%@include file="models/header.jsp"%>
 
 <div class="page-header">
-	<h1 class="text-center">Listagem de Cargos</h1>
+	<h1 class="text-center">Listagem de Pontos</h1>
 
 	<ol class="breadcrumb">
 		<li><a href="index.jsp">Home</a></li>
-		<li class="active">Cargos</li>
+		<li class="active">Pontos</li>
 	</ol>
 </div>
 
 <div class="container">
 	<div
 		class="col-xs-12 col-sm-10 col-md-8 col-lg-8 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
-		<div class="col-sm-12 text-right"
-			style="margin: 10px 0px; padding: 0px;">
-			<a href="novo_cargo.jsp"
-				class="col-sm-4 col-sm-offset-8 btn btn-primary">Novo</a>
-		</div>
 		<table id="table-results"
 			class="data-table table table-striped table-hover table-bordered">
 		</table>
@@ -31,30 +26,35 @@
 </div>
 
 <%@include file="models/scripts.jsp"%>
-<script src="../assets/js/cargos.js"></script>
+<script src="../assets/js/historico.js"></script>
 
 <script id="data-table" type="text/x-handlebars-template">
  				<tr>
 					<th class="id">Id</th>
-					<th class="nome">Nome</th>
-					<th class="horasMensais">Horas Mensais</th>
-					<th class="padraoHorasDiaTrabalho">Horas Por Dia</th>
+					<th class="funcionario">Funcionário</th>
+					<th class="entrada">Hora de Entrada</th>
+					<th class="saida">Horas de Saída</th>					
+					<th class="contrato">Contrato</th>
 					<th class="options">Opções</th>
 				</tr>
 
 		{{#each list}}
 			<tr>
 				<td class="id">{{id}}</td>
-				<td class="nome">{{nome}}</td>
-				<td class="horasMensais">{{horasMensais}}</td>
-				<td class="padraoHorasDiaTrabalho">{{padraoHorasDiaTrabalho}}</td>
-				
+				<td class="funcionario">{{funcionario.nome}}</td>
+				<td class="entrada">{{entrada}}</td>
+				<td class="saida">{{saida}}</td>
+				<td class="contrato">
+					<a href="novo_contrato.jsp?e={{id}}" class="btn btn-warning btn-sm" title="Contrato">
+						<span class="glyphicon glyphicon-edit"></span>
+					</a>
+				</td>							
 				<td class="options">
-					<a href="novo_cargo.jsp?e={{id}}" class="btn btn-warning btn-sm" title="Alterar">
+					<a href="novo_ponto.jsp?e={{id}}" class="btn btn-warning btn-sm" title="Alterar">
 						<span class="glyphicon glyphicon-edit"></span>
 					</a>
 
-					<button onclick="app.cargo.confirmDeletation({{id}});" class="btn btn-danger btn-sm" title="Remover">
+					<button onclick="app.ponto.confirmDeletation({{id}});" class="btn btn-danger btn-sm" title="Remover">
 						<span class="glyphicon glyphicon-trash"></span>
 					</button>
 				</td>

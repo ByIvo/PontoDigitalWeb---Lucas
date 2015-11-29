@@ -4,12 +4,7 @@
 <%@include file="models/header_admin.jsp"%>
 
 <div class="page-header">
-	<h1 class="text-center">Listagem de Cargos</h1>
-
-	<ol class="breadcrumb">
-		<li><a href="index.jsp">Home</a></li>
-		<li class="active">Cargos</li>
-	</ol>
+	<h1 class="text-center">Listagem de Funcionarios</h1>
 </div>
 
 <div class="container">
@@ -17,7 +12,7 @@
 		class="col-xs-12 col-sm-10 col-md-8 col-lg-8 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
 		<div class="col-sm-12 text-right"
 			style="margin: 10px 0px; padding: 0px;">
-			<a href="novo_cargo.jsp"
+			<a href="novo_funcionario.jsp"
 				class="col-sm-4 col-sm-offset-8 btn btn-primary">Novo</a>
 		</div>
 		<table id="table-results"
@@ -31,14 +26,15 @@
 </div>
 
 <%@include file="models/scripts.jsp"%>
-<script src="../assets/js/cargos.js"></script>
+<script src="../assets/js/funcionarios.js"></script>
 
 <script id="data-table" type="text/x-handlebars-template">
  				<tr>
 					<th class="id">Id</th>
 					<th class="nome">Nome</th>
-					<th class="horasMensais">Horas Mensais</th>
-					<th class="padraoHorasDiaTrabalho">Horas Por Dia</th>
+					<th class="cpf">CPF</th>
+					<th class="rg">RG</th>
+					<th class="cargo">Cargo</th>
 					<th class="options">Opções</th>
 				</tr>
 
@@ -46,22 +42,25 @@
 			<tr>
 				<td class="id">{{id}}</td>
 				<td class="nome">{{nome}}</td>
-				<td class="horasMensais">{{horasMensais}}</td>
-				<td class="padraoHorasDiaTrabalho">{{padraoHorasDiaTrabalho}}</td>
-				
+				<td class="cpf">{{cpf}}</td>
+				<td class="rg">{{rg}}</td>
+				<td class="cargo">{{cargo}}</td>
 				<td class="options">
-					<a href="novo_cargo.jsp?e={{id}}" class="btn btn-warning btn-sm" title="Alterar">
+					<a href="novo_ponto.jsp" class="btn btn-warning btn-sm" title="Novo Ponto"> 
+						<span class="glyphicon glyphicon-plus"></span>
+					</a>
+					<a href="novo_funcionario.jsp?e={{id}}" class="btn btn-warning btn-sm" title="Funcionario">
 						<span class="glyphicon glyphicon-edit"></span>
 					</a>
-
-					<button onclick="app.cargo.confirmDeletation({{id}});" class="btn btn-danger btn-sm" title="Remover">
+					<button onclick="app.funcionario.confirmDeletation({{id}});" class="btn btn-danger btn-sm" title="Remover">
 						<span class="glyphicon glyphicon-trash"></span>
 					</button>
 				</td>
 			</tr>
 		{{/each}}
-</script>
 
+</script>
+<!-- onClick="app.funcionario.passId({{id}})" -->
 <!-- Modal -->
 <div class="modal fade" id="confirm" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel">
@@ -88,5 +87,3 @@
 </div>
 
 <%@include file="models/final_page.jsp"%>
-
-

@@ -4,7 +4,6 @@
 <%@include file="models/header.jsp"%>
 
 <div class="page-header">
-	<h1 class="text-center">Opções</h1>
 
 	<ol class="breadcrumb">
 		<li class="active">Home</li>
@@ -13,25 +12,22 @@
 
 <div class="container">
 	<div
-		class="col-xs-12 col-sm-10 col-md-8 col-lg-8 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
-		<div style="margin: 10px" class="col-sm-12 text-center">
-			<a href="cargos.jsp" class="col-sm-12 btn btn-primary">Cargos</a>
-		</div>
-		<div style="margin: 10px" class="col-sm-12 text-center">
-			<a href="contratos.jsp" class="col-sm-12 btn btn-primary">Contratos</a>
-		</div>
-		<div style="margin: 10px" class="col-sm-12 text-center">
-			<a href="funcionarios.jsp" class="col-sm-12 btn btn-primary">Funcionários</a>
-		</div>
-		<div style="margin: 10px" class="col-sm-12 text-center">
-			<a href="pontos.jsp" class="col-sm-12 btn btn-primary">Pontos</a>
-		</div>
-		<div style="margin: 10px" class="col-sm-12 text-center">
-			<a href="regras.jsp" class="col-sm-12 btn btn-primary">Regras</a>
-		</div>
-		<div style="margin: 10px" class="col-sm-12 text-center">
-			<a href="regras_trabalho.jsp" class="col-sm-12 btn btn-primary">Regras de Trabalho</a>
-		</div>
+		class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
+		<form id="form" class="form">
+			<input type="text" name="id" id="id" hidden="true" />
+			<div class="form-group">
+				<label for="entrada">Data de Entrada:</label> <input type="time"
+					class="form-control" name="entrada" id="entrada"
+					placeholder="Data de Entrada" readonly />
+			</div>
+
+			<div class="form-group">
+				<label for="saida">Data de Saída:</label> <input type="time"
+					class="form-control" name="saida" id="saida"
+					placeholder="Data de Saída" readonly />
+			</div>
+
+		</form>
 	</div>
 </div>
 

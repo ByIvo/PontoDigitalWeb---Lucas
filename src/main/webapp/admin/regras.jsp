@@ -51,8 +51,7 @@
 				<td class="valor">{{valor}}</td>
 				<td class="porcentagemHoraExtra">{{porcentagemHoraExtra}}</td>
 				<td class="horasTrabalho">{{horasTrabalho}}</td>
-				<td class="regraTrabalho"><select class="form-control" name="regraTrabalho" id="regraTrabalho">
-				</select></td>
+				<td class="regraTrabalho">{{regraTrabalho.nome}}</td>
 
 				<td class="options">
 					<a href="novo_regra.jsp?e={{id}}" class="btn btn-warning btn-sm" title="Alterar">

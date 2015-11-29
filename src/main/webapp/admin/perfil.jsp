@@ -4,10 +4,10 @@
 <%@include file="models/header.jsp"%>
 
 <div class="page-header">
-	<h1 class="text-center">Cadastro de Funcionários</h1>
+	<h1 class="text-center">Perfil</h1>
 	<ol class="breadcrumb">
 		<li><a href="index.jsp">Home</a></li>
-		<li><a href="funcionarios.jsp">Funcionários</a></li>
+		<li><a href="funcionarios.jsp">Perfil</a></li>
 		<li class="active">Cadastro</li>
 	</ol>
 </div>
@@ -20,14 +20,14 @@
 			<div class="form-group">
 				<label for="nome">Nome:</label> <input type="text"
 					class="form-control" name="nome" id="nome" maxlength="80"
-					placeholder="nome" />
+					placeholder="Nome" />
 			</div>
-
+			
 			<div class="form-group">
 				<label for="description">Cargo:</label> <input type="text"
-					class="form-control" name="cargo" id="cargo" readonly value="{{cargo.nome}}">
+					class="form-control" name="cargo" id="cargo" readonly/>
 			</div>
-
+			
 			<div class="form-group">
 				<label for="rg">RG:</label> <input type="text" class="form-control"
 					name="rg" id="rg" maxlength="8" placeholder="RG" />
@@ -49,6 +49,9 @@
 					class="form-control" name="senha" id="senha" placeholder="Senha" />
 			</div>
 
+
+
+
 			<div class="form-group text-center">
 				<button class="btn btn-primary" name="send" id="send">
 					Salvar</button>
@@ -61,6 +64,6 @@
 </div>
 
 <%@include file="models/scripts.jsp"%>
-<script src="../assets/js/perfil_funcionario.js"></script>
+<script src="../assets/js/perfil.js"></script>
 
 <%@include file="models/final_page.jsp"%>

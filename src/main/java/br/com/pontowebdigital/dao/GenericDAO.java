@@ -104,6 +104,7 @@ public abstract class GenericDAO<T extends Entidade, E>
 		return entityManager.find(entityClass, entityID);
 	}
 	
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List<T> findAll()
 	{

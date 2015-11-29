@@ -52,9 +52,9 @@ app.regra = {
 		 };
 		 
 		 var messages = {
-				 nome: 'Campo obrigatório!',
-				 horasMensais: 'Informe um número!',
-				 padraoHorasDiaTrabalho: 'Informe um número!'
+				 valor: 'Campo obrigatório!',
+				 porcentagemHoraExtra: 'Informe um número!',
+				 horasTrabalho: 'Informe um número!'
 		 };
 		
 		app.validateForm('#form', 'invalidField',rules,messages, this.add);

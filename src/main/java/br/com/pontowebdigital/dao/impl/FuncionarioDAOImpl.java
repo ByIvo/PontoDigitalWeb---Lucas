@@ -8,13 +8,10 @@ import br.com.pontowebdigital.model.Funcionario;
 
 @Repository
 @Transactional
-public class FuncionarioDAOImpl extends GenericDAO<Funcionario, Integer> implements FuncionarioDAO
-{
-	
-	public FuncionarioDAOImpl()
-	{
+public class FuncionarioDAOImpl extends GenericDAO<Funcionario, Integer> implements FuncionarioDAO {
+
+	public FuncionarioDAOImpl() {
 		super(Funcionario.class);
 	}
-	
-	
+
 }

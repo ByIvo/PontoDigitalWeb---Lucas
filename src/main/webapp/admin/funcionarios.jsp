@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="models/start_page.jsp"%>
-<%@include file="models/header.jsp"%>
+<%@include file="models/header_admin.jsp"%>
 
 <div class="page-header">
 	<h1 class="text-center">Listagem de Funcionarios</h1>
@@ -49,8 +49,7 @@
 				<td class="nome">{{nome}}</td>
 				<td class="cpf">{{cpf}}</td>
 				<td class="rg">{{rg}}</td>
-				<td><select class="form-control" name="cargo" id="cargo">
-				</select></td>
+				<td class="cargo">{{cargo}}</td>
 				<td class="options">
 					<a href="novo_ponto.jsp" class="btn btn-warning btn-sm" title="Novo Ponto"> 
 						<span class="glyphicon glyphicon-plus"></span>
