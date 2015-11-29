@@ -48,7 +48,7 @@ public class Funcionario extends Entidade {
 	@OneToMany(targetEntity = Contrato.class, fetch = FetchType.EAGER)
 	private List<Contrato> listaContratos;
 	@Column(nullable=false, unique=true)
-	private String email;
+	private String login;
 	@Column(nullable=false)
 	private String senha;
 	@ManyToOne
@@ -67,7 +67,7 @@ public class Funcionario extends Entidade {
 	}
 
 	public Funcionario(Integer id, String nome, String cpf, String rg, Cargo cargo, Contrato contratoAtual,
-			List<Contrato> listaContratos, String email, String senha, RegraTrabalho regraTrabalho) {
+			List<Contrato> listaContratos, String login, String senha, RegraTrabalho regraTrabalho) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -76,7 +76,7 @@ public class Funcionario extends Entidade {
 		this.cargo = cargo;
 		this.contratoAtual = contratoAtual;
 		this.listaContratos = listaContratos;
-		this.email = email;
+		this.login = login;
 		this.senha = senha;
 		this.regraTrabalho = regraTrabalho;
 	}
@@ -149,12 +149,12 @@ public class Funcionario extends Entidade {
 		this.listaContratos = listaContratos;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getlogin() {
+		return login;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setlogin(String login) {
+		this.login = login;
 	}
 
 	public String getSenha() {
@@ -179,7 +179,7 @@ public class Funcionario extends Entidade {
 	@Override
 	public String toString() {
 		return "Funcionario [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", cargo=" + cargo
-				+ ", contratoAtual=" + contratoAtual + ", listaContratos=" + listaContratos + ", email=" + email
+				+ ", contratoAtual=" + contratoAtual + ", listaContratos=" + listaContratos + ", login=" + login
 				+ ", senha=" + senha + ", regraTrabalho=" + regraTrabalho + "]";
 	}
 

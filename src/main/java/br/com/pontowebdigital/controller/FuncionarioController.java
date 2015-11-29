@@ -44,7 +44,7 @@ public class FuncionarioController
 		
 		return entity;
 	}
-	
+		
 	@RequestMapping(value = "{id}", method = { RequestMethod.DELETE })
 	public @ResponseBody Funcionario deleteEntityById(@PathVariable Integer id)
 	{

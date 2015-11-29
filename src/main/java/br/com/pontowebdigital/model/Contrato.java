@@ -15,6 +15,7 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
@@ -37,9 +38,10 @@ public class Contrato extends Entidade {
 	private double salario;
 	@Column(nullable=false)
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd-mm-yy")
 	private Date dataContrato;
 	@ManyToOne
-	@JoinColumn(name = "funcionario_id", referencedColumnName="id", nullable = true)
+	@JoinColumn(name = "funcionario_id", referencedColumnName="id", nullable=false)
 	private Funcionario funcionario;
 	@Column
 	@JsonIgnore

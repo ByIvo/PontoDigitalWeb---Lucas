@@ -14,6 +14,8 @@ public interface PontoDAO
 	
 	Ponto find(Integer id);
 	
+	Ponto findF(Integer id);
+	
 	void remove(Ponto entity);
 	
 	void remove(Integer id);

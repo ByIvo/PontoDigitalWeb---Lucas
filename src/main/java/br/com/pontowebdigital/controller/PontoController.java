@@ -53,9 +53,9 @@ public class PontoController
 		return null;
 	}
 	
-	@RequestMapping(value = "{id}", method = { RequestMethod.GET })
-	public @ResponseBody Ponto findEntity(@PathVariable Integer id)
-	{
-		return service.find(id);
-	}
+//	@RequestMapping(value = "/new/{id}", method = { RequestMethod.GET })
+//	public @ResponseBody Ponto findEntity(@PathVariable Integer id)
+//	{
+//		return service.find(id);
+//	}
 }

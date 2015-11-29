@@ -13,7 +13,7 @@ public interface DefaultService<ENTIDADE extends Entidade, ID> {
 	ENTIDADE saveOrUpdate(ENTIDADE entity);
 
 	ENTIDADE find(ID id);
-
+	
 	void remove(ENTIDADE entity);
 	
 	void remove(Integer id);

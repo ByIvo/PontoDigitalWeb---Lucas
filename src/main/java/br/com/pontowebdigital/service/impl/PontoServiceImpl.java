@@ -29,7 +29,7 @@ public class PontoServiceImpl implements PontoService
 	{
 		return dao.save(entity);
 	}
-	
+		
 	@Override
 	public Ponto saveOrUpdate(Ponto entity)
 	{

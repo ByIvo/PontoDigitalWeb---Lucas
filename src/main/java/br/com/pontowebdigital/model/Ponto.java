@@ -46,10 +46,15 @@ public class Ponto extends Entidade
 	private Funcionario funcionario;
 	@Column
 	@JsonIgnore
-	private boolean deleted = false;
+private boolean deleted = false;
 	
 	public Ponto()
 	{
+	}
+	
+	public Ponto(Funcionario funcionario){
+		super();
+		this.funcionario = funcionario;
 	}
 	
 	public Ponto(Integer id)
@@ -73,7 +78,7 @@ public class Ponto extends Entidade
 	{
 		return id;
 	}
-	
+		
 	@Override
 	public void setId(Integer id)
 	{
