@@ -12,22 +12,22 @@
 					<label for="campoEmail" class="col-sm-3 control-label">
 						Email</label>
 					<div class="col-sm-9">
-						<input type="email" class="form-control" id="campoEmail"
-							placeholder="Digite seu Email" required>
+						<input type="text" class="form-control" id="login"
+							placeholder="Digite seu Login" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="campoSenha" class="col-sm-3 control-label">
 						Senha</label>
 					<div class="col-sm-9">
-						<input type="password" class="form-control" id="campoSenha"
+						<input type="password" class="form-control" id="senha"
 							placeholder="Digite sua senha" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-sm-9">
 						<div class="checkbox">
-							<label> <input type="checkbox" /> Continuar Logado
+							<label> <input type="checkbox" id="checkBoxLogado"/> Continuar Logado
 							</label>
 						</div>
 					</div>

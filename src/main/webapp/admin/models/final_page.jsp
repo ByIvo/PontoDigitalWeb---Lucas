@@ -13,13 +13,12 @@
 	aria-labelledby="modalLoadingLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<div class="modal-header text-center" style="background-color: #a00201">
-				<img class="center-text" src="../assets/img/logo.png">
-			</div>
+			<div class="modal-header text-center"
+				style="background-color: #a00201"></div>
 			<div class="modal-body text-center">
-				
+
 				<h4 class="modal-title" id="modalLoadingLabel">
-					<span class="rotateInfinite glyphicon glyphicon-refresh"></span> <Strong>Carregando...</Strong> 
+					<span class="rotateInfinite glyphicon glyphicon-refresh"></span> <Strong>Carregando...</Strong>
 				</h4>
 			</div>
 		</div>

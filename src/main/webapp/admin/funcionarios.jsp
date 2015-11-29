@@ -52,7 +52,7 @@
 				<td><select class="form-control" name="cargo" id="cargo">
 				</select></td>
 				<td class="options">
-					<a class="btn btn-warning btn-sm" title="Novo Ponto" onClick="app.funcionario.passId({{id}})">
+					<a href="novo_ponto.jsp" class="btn btn-warning btn-sm" title="Novo Ponto"> 
 						<span class="glyphicon glyphicon-plus"></span>
 					</a>
 					<a href="novo_funcionario.jsp?e={{id}}" class="btn btn-warning btn-sm" title="Funcionario">
@@ -66,7 +66,7 @@
 		{{/each}}
 
 </script>
-
+<!-- onClick="app.funcionario.passId({{id}})" -->
 <!-- Modal -->
 <div class="modal fade" id="confirm" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel">
