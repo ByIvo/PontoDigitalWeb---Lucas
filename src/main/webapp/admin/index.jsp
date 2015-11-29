@@ -32,7 +32,7 @@
 </div>
 
 <%@include file="models/scripts.jsp"%>
-
+<script src="../assets/js/novo_ponto.js"></script>
 <%@include file="models/final_page.jsp"%>
 
 

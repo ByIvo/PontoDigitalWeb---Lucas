@@ -15,10 +15,53 @@
 <div class="container">
 	<div
 		class="col-xs-12 col-sm-10 col-md-8 col-lg-8 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
+		<form class="form-inline">
+			<div class="form-group">
+				<label class="sr-only" for="data1">Período:</label><input
+					type="date" class="form-control" id="data1">
+			</div>
+			<div class="form-group">
+				<input type="date" class="form-control" id="data2">
+			</div>
+			<button type="submit" class="btn btn-default">Buscar</button>
+		</form>
+
 		<table id="table-results"
 			class="data-table table table-striped table-hover table-bordered">
 		</table>
-
+		<form class="form-inline">
+			<div class="form-group">
+				<label class="sr-only" for="horasNormais"></label>Horas Normais: <input
+					type="text" class="form-control" id="horasNormais" readonly>
+			</div>
+			<div class="form-group">
+				<label class="sr-only" for="valorNormal"></label>Valor Normal: <input
+					type="text" class="form-control" id="valorNormal" readonly>
+			</div>
+		</form>
+		<br/>
+		<form class="form-inline">
+			<div class="form-group">
+				<label class="sr-only" for="horasExtras"></label>Horas Extras: <input
+					type="text" class="form-control" id="horasExtras" readonly>
+			</div>
+			<div class="form-group">
+				<label class="sr-only" for="valorExtra"></label>Valor Horas Extras:
+				<input type="text" class="form-control" id="valorExtra" readonly>
+			</div>
+		</form>
+		<br/>
+		<form class="form-inline">
+			<div class="form-group">
+				<label class="sr-only" for="totalTrabalhado"></label>Total de Horas:
+				<input type="text" class="form-control" id="totalTrabalhado"
+					readonly>
+			</div>
+			<div class="form-group">
+				<label class="sr-only" for="totalGanho"></label>Total Ganho: <input
+					type="text" class="form-control" id="totalGanho" readonly>
+			</div>
+		</form>
 		<div class="col-sm-12 text-center">
 			<a href="index.jsp" class="col-sm-12 btn btn-default">Voltar</a>
 		</div>
