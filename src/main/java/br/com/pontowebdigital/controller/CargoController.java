@@ -3,6 +3,7 @@ package br.com.pontowebdigital.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ public class CargoController
 	@Autowired
 	private CargoService service;
 	
+	@Secured("ROLE")
 	@ResponseBody
 	@RequestMapping(value="/",method = { RequestMethod.GET })
 	public List<Cargo> findAll()
@@ -28,6 +30,7 @@ public class CargoController
 		return service.findAll();
 	}
 	
+	@Secured("ROLE")
 	@ResponseBody
 	@RequestMapping(value="/", method = { RequestMethod.POST })
 	public Cargo addEntity(@ModelAttribute("cargo") Cargo entity)

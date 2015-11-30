@@ -53,6 +53,55 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- Spring Security -->
+
+		<security:global-method-security
+			secured-annotations="enabled" />
+
+		<security:http auto-config="false" create-session="ifRequired">
+			<!-- Allow login page -->
+			<security:intercept-url pattern="/index*"
+				access="IS_AUTHENTICATED_ANONYMOUSLY" />
+
+			<!-- Allow static content -->
+			<security:intercept-url pattern="/assets/**"
+				access="IS_AUTHENTICATED_ANONYMOUSLY" />
+
+			<!-- Protected Pages -->
+			<security:intercept-url pattern="/admin/*"
+				access="ROLE_LOGED" />
+
+			<!-- Spring security entry point in case of error default-target-url="/admin/index.jsp" -->
+			<security:form-login authentication-failure-url="/401.jsp"
+				login-page="/index.jsp" login-processing-url="/login"
+				authentication-success-handler-ref="successHandler" />
+
+			<!-- Logout url -->
+			<security:logout invalidate-session="true"
+				logout-url="/logout" success-handler-ref="customLogout" />
+		</security:http>
+
+		<bean id="successHandler"
+			class="br.com.pontowebdigital.security.AjaxAuthSucessHandler" />
+
+		<bean id="customLogout" class="br.com.pontowebdigital.security.CustomLogout" />
+
+		<!-- This is where the login process happens -->
+		<security:authentication-manager>
+			<security:authentication-provider
+				ref="customAuthenticationProvider"></security:authentication-provider>
+		</security:authentication-manager>
+
+		<bean id="customAuthenticationProvider" class="br.com.pontowebdigital.security.CustomAuth" />
+
+		<!-- Changing default "j_username" and "j_password" field names -->
+		<bean id="userPassAuthFilterBeanPostProcessor"
+			class="br.com.pontowebdigital.security.UserPassAuthFilterBeanPostProcessor">
+			<property name="usernameParameter" value="login" />
+			<property name="passwordParameter" value="senha" />
+		</bean>
+	
 
 	<!-- Converters (USAR SELECT BOX COM FILL AUTOMATICO) -->
 	<bean id="entityConverter"
