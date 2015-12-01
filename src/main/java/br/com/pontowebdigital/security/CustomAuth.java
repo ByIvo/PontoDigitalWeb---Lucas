@@ -22,15 +22,15 @@ public class CustomAuth implements AuthenticationProvider
 		String email = (String) authentication.getPrincipal();
 		String password = (String) authentication.getCredentials();
 		
-		if (email.isEmpty() || password.isEmpty())
+		/*if (email.isEmpty() || password.isEmpty())
 		{
 			throw new BadCredentialsException("Invalid username/password");
-		}
+		}*/
 		
-		Funcionario funcionario = null;
+		Funcionario funcionario = new Funcionario();
 		
 		// funcionario = service.makeLogin(email, password);
-		return new UsernamePasswordAuthenticationToken(funcionario, password);
+		return new UsernamePasswordAuthenticationToken(email, password);
 	}
 	
 	@Override

@@ -69,7 +69,7 @@
 				access="IS_AUTHENTICATED_ANONYMOUSLY" />
 
 			<!-- Protected Pages -->
-			<security:intercept-url pattern="/admin/*"
+			<security:intercept-url pattern="/asdasd/*"
 				access="ROLE_LOGED" />
 
 			<!-- Spring security entry point in case of error default-target-url="/admin/index.jsp" -->

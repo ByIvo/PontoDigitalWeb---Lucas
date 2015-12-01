@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -172,8 +173,14 @@ public class Funcionario extends Entidade {
 	public void setRegraTrabalho(RegraTrabalho regraTrabalho) {
 		this.regraTrabalho = regraTrabalho;
 	}
-	public void setSenhaEncriptada(String plainSenha){
-		
+	
+	public void escriptarSenha(){
+		this.setSenhaEncriptada(this.senha);
+	}
+	
+	public void setSenhaEncriptada(String password)
+	{
+		this.senha = DigestUtils.sha1Hex(password);
 	}
 
 	@Override
