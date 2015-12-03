@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.pontowebdigital.dao.PontoDAO;
+import br.com.pontowebdigital.dao.impl.PontoDAOImpl;
+import br.com.pontowebdigital.model.Funcionario;
 import br.com.pontowebdigital.model.Ponto;
 import br.com.pontowebdigital.service.PontoService;
 
@@ -17,6 +19,7 @@ public class PontoServiceImpl implements PontoService
 	
 	@Autowired
 	private PontoDAO dao;
+	
 	
 	@Override
 	public List<Ponto> findAll()
@@ -60,4 +63,5 @@ public class PontoServiceImpl implements PontoService
 		return dao.update(entity);
 	}
 	
+		
 }

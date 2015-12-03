@@ -26,13 +26,16 @@
 					class="form-control" name="saida" id="saida"
 					placeholder="Data de Saída" readonly />
 			</div>
-
+			<div class="form-group">
+				<button class="btn btn-primary" name="send" id="send">
+					Registrar</button>
+			</div>
 		</form>
 	</div>
 </div>
 
 <%@include file="models/scripts.jsp"%>
-<script src="../assets/js/novo_ponto.js"></script>
+<script src="../assets/js/index_f.js"></script>
 <%@include file="models/final_page.jsp"%>
 
 

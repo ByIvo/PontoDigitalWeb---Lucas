@@ -8,14 +8,23 @@ app.ponto = {
 
 	},
 
-	findEntity : function(id) {
-		var success = this.fillForm;
+	findPontoByFuncionarioId : function(funcionarioId) {
+		var success = this.fillPonto;
 
 		var error = function(e) {
 			app.showErrorMessage("Não foi possivel iniciar a edição!");
 		};
 
 		app.findEntity(path + id, success, error);
+
+	},
+	fillPonto : function(entity) {
+		var form = $('#form')[0];
+		if (entity){
+				form.id.value = entity.id;
+				form.entrada.value = entity.entrada;
+				form.saida.value = entity.saida;			
+		}
 	},
 
 	add : function() {
@@ -44,8 +53,8 @@ app.ponto = {
 		};
 
 		var messages = {
-				entrada : 'Campo obrigatório!',
-				saida   : 'Campo obrigatório!'
+			entrada : 'Campo obrigatório!',
+			saida : 'Campo obrigatório!'
 		};
 
 		app.validateForm('#form', 'invalidField', rules, messages, this.add);
@@ -53,6 +62,15 @@ app.ponto = {
 
 	prepareCancelButton : function() {
 		$('#backButton').click(app.ponto.back);
+	},
+
+	findPontoByFuncionario : function(path, success, error) {
+		var success = this.fillForm;
+
+		var error = function(e) {
+			app.showErrorMessage("Não foi possivel iniciar a edição!");
+		};
+		app.findEntity(path + id, success, error);
 	},
 
 	back : function() {

@@ -1,9 +1,14 @@
 package br.com.pontowebdigital.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +37,7 @@ public class PontoController
 	@RequestMapping(value="/", method = { RequestMethod.POST })
 	public Ponto addEntity(@ModelAttribute("ponto") Ponto entity)
 	{
+		
 		entity = service.saveOrUpdate(entity);
 		return entity;
 	}
@@ -48,14 +54,22 @@ public class PontoController
 	@RequestMapping(value = "{id}", method = { RequestMethod.DELETE })
 	public @ResponseBody Ponto deleteEntityById(@PathVariable Integer id)
 	{
-		service.remove(id);
-		
+		service.remove(id);				
 		return null;
 	}
 	
-//	@RequestMapping(value = "/new/{id}", method = { RequestMethod.GET })
-//	public @ResponseBody Ponto findEntity(@PathVariable Integer id)
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+	    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+	    sdf.setLenient(true);
+	    binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
+	}
+	
+//	@RequestMapping(value = "/{id}", method = { RequestMethod.GET })
+//	public @ResponseBody List<Ponto> relatorioByFuncionario(@PathVariable Integer id)
 //	{
-//		return service.find(id);
+//		falta fazer um findAll que lista pontos por id
+//		return service.findAllById(id);
 //	}
+
 }
