@@ -1,5 +1,6 @@
 package br.com.pontowebdigital.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,11 @@ public class PontoServiceImpl implements PontoService
 	
 	public List<Ponto> findAllByFuncionarioId(Integer id){
 		return dao.findAllByFuncionarioId(id);
+	}
+
+	@Override
+	public List<Ponto> findBetweenDates(Integer id, Date dataI, Date dataF) {
+		return dao.findBetweenDates(id, dataI, dataF);
 	}
 	
 		

@@ -25,7 +25,7 @@ public class PontoController {
 
 	@Autowired
 	private PontoService service;
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/", method = { RequestMethod.GET })
 	public List<Ponto> findAll() {
@@ -66,4 +66,9 @@ public class PontoController {
 		return service.findAllByFuncionarioId(id);
 	}
 
+	@RequestMapping(value = "/{id, dataI, dataF}", method = { RequestMethod.GET })
+	public @ResponseBody List<Ponto> relatorioBetweenDates(@PathVariable Integer id, Date dataI, Date dataF) {
+		return service.findBetweenDates(id, dataI, dataF);
+
+	}
 }
