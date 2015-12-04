@@ -20,7 +20,6 @@ public class PontoServiceImpl implements PontoService
 	@Autowired
 	private PontoDAO dao;
 	
-	
 	@Override
 	public List<Ponto> findAll()
 	{
@@ -61,6 +60,10 @@ public class PontoServiceImpl implements PontoService
 	public Ponto update(Ponto entity)
 	{
 		return dao.update(entity);
+	}
+	
+	public List<Ponto> findAllByFuncionarioId(Integer id){
+		return dao.findAllByFuncionarioId(id);
 	}
 	
 		

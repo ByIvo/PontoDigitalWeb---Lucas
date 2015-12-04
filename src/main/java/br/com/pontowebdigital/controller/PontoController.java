@@ -17,59 +17,53 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.pontowebdigital.model.Ponto;
 import br.com.pontowebdigital.service.PontoService;
+import br.com.pontowebdigital.service.impl.PontoServiceImpl;
 
 @Controller
 @RequestMapping("admin/pontos")
-public class PontoController
-{
-	
+public class PontoController {
+
 	@Autowired
 	private PontoService service;
 	
 	@ResponseBody
-	@RequestMapping(value="/",method = { RequestMethod.GET })
-	public List<Ponto> findAll()
-	{
+	@RequestMapping(value = "/", method = { RequestMethod.GET })
+	public List<Ponto> findAll() {
 		return service.findAll();
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/", method = { RequestMethod.POST })
-	public Ponto addEntity(@ModelAttribute("ponto") Ponto entity)
-	{
-		
+	@RequestMapping(value = "/", method = { RequestMethod.POST })
+	public Ponto addEntity(@ModelAttribute("ponto") Ponto entity) {
+
 		entity = service.saveOrUpdate(entity);
 		return entity;
 	}
-		
+
 	@ResponseBody
 	@RequestMapping(method = { RequestMethod.POST })
-	public Ponto deleteEntity(@ModelAttribute("ponto") Ponto entity)
-	{
+	public Ponto deleteEntity(@ModelAttribute("ponto") Ponto entity) {
 		service.remove(entity);
-		
+
 		return entity;
 	}
-	
+
 	@RequestMapping(value = "{id}", method = { RequestMethod.DELETE })
-	public @ResponseBody Ponto deleteEntityById(@PathVariable Integer id)
-	{
-		service.remove(id);				
+	public @ResponseBody Ponto deleteEntityById(@PathVariable Integer id) {
+		service.remove(id);
 		return null;
 	}
-	
+
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-	    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-	    sdf.setLenient(true);
-	    binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		sdf.setLenient(true);
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
 	}
-	
-//	@RequestMapping(value = "/{id}", method = { RequestMethod.GET })
-//	public @ResponseBody List<Ponto> relatorioByFuncionario(@PathVariable Integer id)
-//	{
-//		falta fazer um findAll que lista pontos por id
-//		return service.findAllById(id);
-//	}
+
+	@RequestMapping(value = "/{id}", method = { RequestMethod.GET })
+	public @ResponseBody List<Ponto> relatorioByFuncionario(@PathVariable Integer id) {
+		return service.findAllByFuncionarioId(id);
+	}
 
 }
