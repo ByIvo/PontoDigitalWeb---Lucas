@@ -2,6 +2,7 @@ package br.com.pontowebdigital.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.pontowebdigital.model.Ponto;
+import br.com.pontowebdigital.model.Regra;
 import br.com.pontowebdigital.service.PontoService;
-import br.com.pontowebdigital.service.impl.PontoServiceImpl;
 
 @Controller
 @RequestMapping("admin/pontos")
@@ -69,6 +70,40 @@ public class PontoController {
 	@RequestMapping(value = "/{id, dataI, dataF}", method = { RequestMethod.GET })
 	public @ResponseBody List<Ponto> relatorioBetweenDates(@PathVariable Integer id, Date dataI, Date dataF) {
 		return service.findBetweenDates(id, dataI, dataF);
+
+	}
+
+	@SuppressWarnings("deprecation")
+	@RequestMapping(value = "/{id, dataI, dataF}", method = { RequestMethod.GET })
+	public @ResponseBody String calculoBetweenDates(@PathVariable Integer id, Date dataI, Date dataF) {
+		List<Ponto> listaPontos = service.findBetweenDates(id, dataI, dataF);
+		String valores;
+		Double thn = (double) 0, the = (double) 0, tht = (double) 0, vn = (double) 0, ve = (double) 0, vt = (double) 0, he = (double) 0;
+		Regra semanal = service.findRegra(id, "SEMANAL");
+		Regra diario = service.findRegra(id, "DIARIO");
+		for (Ponto ponto : listaPontos) {
+			if (ponto.getEntrada().getDay() == 6 || ponto.getEntrada().getDay() == 0) {
+				tht = tht + ponto.getSaida().getTime() - ponto.getEntrada().getTime();
+				he = (ponto.getSaida().getTime() - ponto.getEntrada().getTime()) - diario.getHorasTrabalho();
+				he = he + ((he * diario.getporcentagemHoraExtra()) / 100);
+				the = the + he;
+				thn = tht - the;
+			} else {
+				tht = tht + ponto.getSaida().getTime() - ponto.getEntrada().getTime();
+				he = (ponto.getSaida().getTime() - ponto.getEntrada().getTime()) - diario.getHorasTrabalho();
+				he = he + ((he * semanal.getporcentagemHoraExtra()) / 100);
+				the = the + he;
+				thn = tht - the;
+			}
+		}
+		vn = thn * semanal.getValor();
+		ve = the * semanal.getValor();
+		vt = vn + ve;
+		
+		valores = thn + ";" + vn + ";" + the + ";" + ve + ";" + tht + ";" + vt + ";"; 
+		
+
+		return valores;
 
 	}
 }
