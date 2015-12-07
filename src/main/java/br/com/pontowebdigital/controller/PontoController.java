@@ -98,46 +98,45 @@ public class PontoController {
 				tardeEntrada = new LocalTime(13, 30, 00, 00), tardeSaida = new LocalTime(17, 30, 00, 00),
 				entradaLocalTime, saidaLocalTime;
 		double thn = 0, the = 0, thec = 0, tht = 0, vn = 0, ve = 0, vt = 0, he = 0;
-		double horasTrabalhadas = 0, horasExtras, intervalo, porcentagem, totalHorasNormais, valorPorHora = 5.50;
+		double horasTrabalhadas = 0, horasExtras, horasExtrasCalculadas, intervalo, porcentagem, totalHorasNormais, valorPorHora = 5.50;
 		for (Ponto ponto : listaPontos) {
+			// Converte a entrada e saída em DateTime do Joda
 			DateTime entrada = new DateTime(ponto.getEntrada()), saida = new DateTime(ponto.getSaida());
-			entradaLocalTime = toLocalTime(entrada); saidaLocalTime = toLocalTime(saida);
+			// Transforma em LocalTime
+			entradaLocalTime = toLocalTime(entrada);
+			saidaLocalTime = toLocalTime(saida);
+			// Procura as horas trabalhadas
 			intervalo = intervaloEmDouble(entradaLocalTime, saidaLocalTime);
 			horasTrabalhadas = horasTrabalhadas + intervalo;
-			
+			// Verifica o dia da Semana
 			if (entrada.dayOfWeek().equals(6) || entrada.dayOfWeek().equals(0)) {
 				porcentagem = 100;
 			} else {
 				porcentagem = 60;
 			}
-			he = he + verificarHoraExtra(manhaEntrada, manhaSaida, tardeEntrada, tardeSaida, entradaLocalTime, saidaLocalTime);
-			/*
-			 * if
-			 * (entrada.toLocalTime().isBefore(manhaEntrada.minusMinutes(10))) {
-			 * he = (manhaEntrada.getMillisOfDay() - entrada.getMillis() /
-			 * 60000); System.out.println("executou primeiro if"); the = the +
-			 * he; thec = he + (he * porcentagem) / 100; } else if
-			 * (entrada.toLocalTime().isBefore(tardeEntrada.minusMinutes(10))) {
-			 * he = (tardeEntrada.getMillisOfDay() - entrada.getMillis() /
-			 * 60000); System.out.println("executou segundo if"); the = the +
-			 * he; thec = he + (he * porcentagem) / 100; } else if
-			 * (saida.toLocalTime().isAfter(manhaSaida.plusMinutes(10))) { he =
-			 * (manhaEntrada.getMillisOfDay() - entrada.getMillis() / 60000);
-			 * System.out.println("executou terceiro if"); the = the + he; thec
-			 * = he + (he * porcentagem) / 100; } else if
-			 * (saida.toLocalTime().isAfter(tardeSaida.plusMinutes(10))) { he =
-			 * (manhaEntrada.getMillisOfDay() - entrada.getMillis() / 60000);
-			 * System.out.println("executou quarto if"); the = the + he; thec =
-			 * he + (he * porcentagem) / 100; }
-			 */
+			// Verifica se achou alguma hora extra
+			he = verificarHoraExtra(manhaEntrada, manhaSaida, tardeEntrada, tardeSaida, entradaLocalTime,
+					saidaLocalTime);
+			thec = thec + ((he * porcentagem) / 100);
+			the = the + he;
+			System.out.println("Total de Horas Extras até agora: " + the + "\n");
+
 		}
-		horasExtras = the / 60;
+		horasExtras = the * 100;
+		horasExtras = horasExtras / 60;
+		horasExtrasCalculadas = thec * 100;
+		horasExtrasCalculadas = horasExtrasCalculadas / 60;
+
 		totalHorasNormais = horasTrabalhadas - the;
 		vn = totalHorasNormais * valorPorHora;
 		ve = thec * valorPorHora;
-
-		return "Horas Trabalhadas: " + horasTrabalhadas + " - Valor das Horas Trabalhadas: " + vn + "\nHoras Extras: "
-				+ horasExtras + " - Valor das Horas Extras Trabalhadas: " + ve;
+		System.out.println("hora Extra Calculada " + horasExtrasCalculadas);
+		System.out.println("Horas Trabalhadas: " + horasTrabalhadas + "\nHoras Normais: " + totalHorasNormais
+				+ " - Valor das Horas Normais: " + vn + "\n Horas Extras trabalhadas: " + horasExtras
+				+ " Valor das Horas Extras: " + ve);
+		return "Horas Trabalhadas: " + horasTrabalhadas + "\nHoras Normais: " + totalHorasNormais
+				+ " - Valor das Horas Normais: " + vn + "\n Horas Extras trabalhadas: " + horasExtras
+				+ " Valor das Horas Extras: " + ve;
 
 	}
 
@@ -147,11 +146,30 @@ public class PontoController {
 
 		return dataConvertida;
 	}
-	
-	private double verificarHoraExtra(LocalTime manhaEntrada, LocalTime manhaSaida, LocalTime tardeEntrada, LocalTime tardeSaida, LocalTime entrada, LocalTime saida){
+
+	private double verificarHoraExtra(LocalTime manhaEntrada, LocalTime manhaSaida, LocalTime tardeEntrada,
+			LocalTime tardeSaida, LocalTime entrada, LocalTime saida) {
 		double he = 0;
-		
-		
+		System.out.println("chamou o verifica Hora Extra");
+		// chegou antes do horário da manhã anttes do horário
+		if (entrada.isBefore(manhaEntrada.minusMinutes(10))) {
+			System.out.println("Achou Hora Extra - entrou no 1 if");
+			he = intervaloEmDouble(manhaEntrada, entrada);
+			// chegou antes do horário da tarde
+		} else if (entrada.isAfter(manhaSaida) && entrada.isBefore(tardeEntrada.minusMinutes(10))) {
+			System.out.println("Achou Hora Extra - entrou no 2 if");
+			he = intervaloEmDouble(tardeEntrada, entrada);
+			// saiu depois do horário da manhã
+		} else if (saida.isAfter(manhaSaida.plusMinutes(10)) && saida.isBefore(tardeEntrada)) {
+			System.out.println("Achou Hora Extra - entrou no 3 if");
+			he = intervaloEmDouble(manhaSaida, saida);
+			// saiu depois do horário da tarde
+		} else if (saida.isAfter(tardeSaida.plusMinutes(10))) {
+			System.out.println("Achou Hora Extra - entrou no 4 if");
+			he = intervaloEmDouble(saida, tardeSaida);
+		}
+		;
+
 		return he;
 	}
 
@@ -166,10 +184,19 @@ public class PontoController {
 
 		return horaConvertida;
 	}
-	private double intervaloEmDouble(LocalTime l1, LocalTime l2){
-		double horas;
+
+	private double intervaloEmDouble(LocalTime l1, LocalTime l2) {
+		double horas, minutos;
 		int emMinutos = Minutes.minutesBetween(l1, l2).getMinutes();
+		System.out.println("achou os minutos: " + emMinutos);
 		horas = emMinutos / 60;
+		System.out.println("Transformou os minutos em horas :" + horas);
+		minutos = emMinutos % 60;
+		System.out.println("Achou o resto :" + minutos);
+		minutos = minutos / 60;
+		System.out.println("Transformou o resto em double :" + minutos);
+		horas = horas + minutos;
+		System.out.println("Resultado: " + horas + "\n --------------------------------------\n");
 		return horas;
 	}
 
