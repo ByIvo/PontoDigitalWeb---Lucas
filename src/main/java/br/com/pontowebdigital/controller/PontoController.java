@@ -1,23 +1,13 @@
 package br.com.pontowebdigital.controller;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import org.joda.time.DateTime;
-import org.joda.time.Interval;
 import org.joda.time.LocalTime;
 import org.joda.time.Minutes;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -104,18 +94,23 @@ public class PontoController {
 	@RequestMapping(value = "/teste", method = { RequestMethod.GET })
 	public @ResponseBody String calculoTeste() {
 		List<Ponto> listaPontos = service.findAll();
-		LocalTime manhaEntrada = new LocalTime(7, 30), manhaSaida = new LocalTime(11, 30),
-				tardeEntrada = new LocalTime(13, 30), tardeSaida = new LocalTime(17, 30);
+		LocalTime manhaEntrada = new LocalTime(7, 30, 00, 00), manhaSaida = new LocalTime(11, 30, 00, 00),
+				tardeEntrada = new LocalTime(13, 30, 00, 00), tardeSaida = new LocalTime(17, 30, 00, 00),
+				entradaLocalTime, saidaLocalTime;
 		double thn = 0, the = 0, thec = 0, tht = 0, vn = 0, ve = 0, vt = 0, he = 0;
-		double horasTrabalhadas = 0, horasExtras, porcentagem, totalHorasNormais, valorPorHora = 5.50;
+		double horasTrabalhadas = 0, horasExtras, intervalo, porcentagem, totalHorasNormais, valorPorHora = 5.50;
 		for (Ponto ponto : listaPontos) {
 			DateTime entrada = new DateTime(ponto.getEntrada()), saida = new DateTime(ponto.getSaida());
-			tht = tht + (saida.getMillis() - entrada.getMillis()) / 60000;
+			entradaLocalTime = toLocalTime(entrada); saidaLocalTime = toLocalTime(saida);
+			intervalo = intervaloEmDouble(entradaLocalTime, saidaLocalTime);
+			horasTrabalhadas = horasTrabalhadas + intervalo;
+			
 			if (entrada.dayOfWeek().equals(6) || entrada.dayOfWeek().equals(0)) {
 				porcentagem = 100;
 			} else {
 				porcentagem = 60;
 			}
+			he = he + verificarHoraExtra(manhaEntrada, manhaSaida, tardeEntrada, tardeSaida, entradaLocalTime, saidaLocalTime);
 			/*
 			 * if
 			 * (entrada.toLocalTime().isBefore(manhaEntrada.minusMinutes(10))) {
@@ -136,7 +131,6 @@ public class PontoController {
 			 * he + (he * porcentagem) / 100; }
 			 */
 		}
-		horasTrabalhadas = tht / 60;
 		horasExtras = the / 60;
 		totalHorasNormais = horasTrabalhadas - the;
 		vn = totalHorasNormais * valorPorHora;
@@ -145,6 +139,38 @@ public class PontoController {
 		return "Horas Trabalhadas: " + horasTrabalhadas + " - Valor das Horas Trabalhadas: " + vn + "\nHoras Extras: "
 				+ horasExtras + " - Valor das Horas Extras Trabalhadas: " + ve;
 
+	}
+
+	private LocalTime toLocalTime(DateTime data) {
+		LocalTime dataConvertida = new LocalTime(data.getHourOfDay(), data.getMinuteOfHour(), data.getSecondOfMinute(),
+				data.getMillisOfSecond());
+
+		return dataConvertida;
+	}
+	
+	private double verificarHoraExtra(LocalTime manhaEntrada, LocalTime manhaSaida, LocalTime tardeEntrada, LocalTime tardeSaida, LocalTime entrada, LocalTime saida){
+		double he = 0;
+		
+		
+		return he;
+	}
+
+	private LocalTime intervaloEmLocalTime(LocalTime l1, LocalTime l2) {
+		LocalTime horaConvertida;
+		int emMinutos = Minutes.minutesBetween(l1, l2).getMinutes();
+		int horas = emMinutos / 60;
+		int minutos = emMinutos % 60;
+		int segundos = emMinutos * 60;
+		int mili = segundos * 1000;
+		horaConvertida = new LocalTime(horas, minutos, segundos, mili);
+
+		return horaConvertida;
+	}
+	private double intervaloEmDouble(LocalTime l1, LocalTime l2){
+		double horas;
+		int emMinutos = Minutes.minutesBetween(l1, l2).getMinutes();
+		horas = emMinutos / 60;
+		return horas;
 	}
 
 	/*
