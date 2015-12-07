@@ -13,4 +13,6 @@ public interface PontoService extends DefaultService<Ponto, Integer>
 	List<Ponto> findBetweenDates(Integer id, Date dataI, Date dataF);
 	
 	Regra findRegra(Integer id, String tipo);
+	
+	Ponto findLastPonto(Integer id);
 }

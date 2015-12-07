@@ -77,6 +77,11 @@ public class PontoServiceImpl implements PontoService
 	public Regra findRegra(Integer id, String tipo) {
 		return dao.findRegra(id, tipo);
 	}
+
+	@Override
+	public Ponto findLastPonto(Integer id) {
+		return dao.findLastPonto(id);
+	}
 	
 		
 }

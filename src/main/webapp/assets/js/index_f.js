@@ -18,6 +18,21 @@ app.ponto = {
 		app.findEntity(path + id, success, error);
 
 	},
+	
+	salvar : function(){
+		var success = function(response) {
+			app.prepareSuccessMessage('Cadastrado com sucesso!');
+			app.ponto.back();
+		};
+
+		var error = function(e) {
+			app
+					.showErrorMessage("Ocorreu um erro ao tentar salvar as alterações!");
+		};
+
+		app.addEntity(path, '#form', success, error);
+	},
+	
 	fillPonto : function(entity) {
 		var form = $('#form')[0];
 		if (entity){
@@ -43,18 +58,13 @@ app.ponto = {
 
 	prepareForm : function() {
 		var rules = {
-			entrada : {
+			funcionario : {
 				required : true
-			},
-
-			saida : {
-				required : true,
 			}
 		};
 
 		var messages = {
-			entrada : 'Campo obrigatório!',
-			saida : 'Campo obrigatório!'
+			funcionario : 'Campo obrigatório!',
 		};
 
 		app.validateForm('#form', 'invalidField', rules, messages, this.add);

@@ -17,19 +17,20 @@
 		class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
 		<form id="form" class="form">
 			<input type="text" name="id" id="id" hidden="true"/>
+			<input type="text" name="funcionario.id" id="funcionario.id" hidden="true"/>
 			<div class="form-group">
 				<label for="funcionario">Funcionário:</label> <input type="text"
-					class="form-control" name="funcionario" id="funcionario"
+					class="form-control" name="funcionario.nome" id="funcionario.nome"
 					placeholder="Funcionário" />
 			</div>
 			<div class="form-group">
-				<label for="entrada">Data de Entrada:</label> <input type="time"
+				<label for="entrada">Data de Entrada:</label> <input type="datetime"
 					class="form-control" name="entrada" id="entrada"
 					placeholder="Data de Entrada" />
 			</div>
 
 			<div class="form-group">
-				<label for="saida">Data de Saída:</label> <input type="time"
+				<label for="saida">Data de Saída:</label> <input type="datetime"
 					class="form-control" name="saida" id="saida"
 					placeholder="Data de Saída" />
 			</div>

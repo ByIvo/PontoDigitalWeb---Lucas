@@ -44,8 +44,8 @@ app.ponto = {
 		};
 
 		var messages = {
-				entrada : 'Campo obrigatório!',
-				saida   : 'Campo obrigatório!'
+			entrada : 'Campo obrigatório!',
+			saida : 'Campo obrigatório!'
 		};
 
 		app.validateForm('#form', 'invalidField', rules, messages, this.add);
@@ -69,12 +69,15 @@ app.ponto = {
 
 	fillForm : function(entity) {
 		var form = $('#form')[0];
+		var e = new Date(entity.entrada).toUTCString();
+		var s = new Date(entity.saida).toUTCString();
+
 		if (entity) {
 			form.id.value = entity.id;
-			form.funcionario.value = entity.funcionario.id;
-			form.funcionario.value = entity.funcionario.nome;
-			form.entrada.value = entity.entrada;
-			form.saida.value = entity.saida;
+			form.funcionario.id.value = entity.funcionario.id;
+			form.funcionario.nome.value = entity.funcionario.nome;
+			form.entrada.value = e;
+			form.saida.value = s;
 		}
 	}
 }

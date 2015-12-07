@@ -19,9 +19,6 @@
 			class="data-table table table-striped table-hover table-bordered">
 		</table>
 
-		<div class="col-sm-12 text-center">
-			<a href="index.jsp" class="col-sm-12 btn btn-default">Voltar</a>
-		</div>
 	</div>
 </div>
 

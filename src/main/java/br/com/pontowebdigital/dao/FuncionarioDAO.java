@@ -14,6 +14,8 @@ public interface FuncionarioDAO
 	
 	Funcionario find(Integer id);
 	
+	Funcionario findFuncionario(Integer id);
+	
 	void remove(Funcionario entity);
 	
 	void remove(Integer id);

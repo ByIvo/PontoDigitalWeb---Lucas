@@ -16,6 +16,11 @@
 		<form id="form" class="form">
 			<input type="text" name="id" id="id" hidden="true" />
 			<div class="form-group">
+				<label for="funcionarioId">Funcionario ID:</label> <input type="text"
+					class="form-control" name="funcionario" id="funcionario"
+					placeholder="ID do Funcionario"/>
+			</div>
+			<div class="form-group">
 				<label for="entrada">Data de Entrada:</label> <input type="time"
 					class="form-control" name="entrada" id="entrada"
 					placeholder="Data de Entrada" readonly />

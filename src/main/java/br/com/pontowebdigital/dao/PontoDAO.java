@@ -16,6 +16,8 @@ public interface PontoDAO
 	
 	Ponto find(Integer id);
 	
+	Ponto findLastPonto(Integer id);
+	
 	List<Ponto> findAllByFuncionarioId(Integer id);
 	
 	List<Ponto> findBetweenDates(Integer id, Date dataI, Date dataF);

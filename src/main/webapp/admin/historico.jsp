@@ -23,7 +23,8 @@
 			<div class="form-group">
 				<input type="date" class="form-control" id="data2">
 			</div>
-			<button type="submit" class="btn btn-default">Buscar</button>
+			<button type="submit" class="btn btn-default" onclick="obterValores">Buscar</button>
+			
 		</form>
 
 		<table id="table-results"
@@ -41,6 +42,9 @@
 		</form>
 		<br/>
 		<form class="form-inline">
+		<div class="form-group">
+			<input type="text" class="form-control" id="teste" readonly>
+		</div>
 			<div class="form-group">
 				<label class="sr-only" for="horasExtras"></label>Horas Extras: <input
 					type="text" class="form-control" id="horasExtras" readonly>
