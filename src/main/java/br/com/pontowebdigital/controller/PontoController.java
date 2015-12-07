@@ -98,7 +98,8 @@ public class PontoController {
 				tardeEntrada = new LocalTime(13, 30, 00, 00), tardeSaida = new LocalTime(17, 30, 00, 00),
 				entradaLocalTime, saidaLocalTime;
 		double thn = 0, the = 0, thec = 0, tht = 0, vn = 0, ve = 0, vt = 0, he = 0;
-		double horasTrabalhadas = 0, horasExtras, horasExtrasCalculadas, intervalo, porcentagem, totalHorasNormais, valorPorHora = 5.50;
+		double horasTrabalhadas = 0, horasExtras, horasExtrasCalculadas, intervalo, porcentagem, totalHorasNormais,
+				valorPorHora = 5.50;
 		for (Ponto ponto : listaPontos) {
 			// Converte a entrada e saída em DateTime do Joda
 			DateTime entrada = new DateTime(ponto.getEntrada()), saida = new DateTime(ponto.getSaida());
@@ -122,18 +123,15 @@ public class PontoController {
 			System.out.println("Total de Horas Extras até agora: " + the + "\n");
 
 		}
+
 		horasExtras = the * 100;
 		horasExtras = horasExtras / 60;
 		horasExtrasCalculadas = thec * 100;
 		horasExtrasCalculadas = horasExtrasCalculadas / 60;
-
 		totalHorasNormais = horasTrabalhadas - the;
 		vn = totalHorasNormais * valorPorHora;
 		ve = thec * valorPorHora;
 		System.out.println("hora Extra Calculada " + horasExtrasCalculadas);
-		System.out.println("Horas Trabalhadas: " + horasTrabalhadas + "\nHoras Normais: " + totalHorasNormais
-				+ " - Valor das Horas Normais: " + vn + "\n Horas Extras trabalhadas: " + horasExtras
-				+ " Valor das Horas Extras: " + ve);
 		return "Horas Trabalhadas: " + horasTrabalhadas + "\nHoras Normais: " + totalHorasNormais
 				+ " - Valor das Horas Normais: " + vn + "\n Horas Extras trabalhadas: " + horasExtras
 				+ " Valor das Horas Extras: " + ve;
@@ -145,6 +143,13 @@ public class PontoController {
 				data.getMillisOfSecond());
 
 		return dataConvertida;
+	}
+
+	private LocalTime horaDoubleToLocalTime(double valor) {
+		LocalTime hora = new LocalTime();
+		
+		
+		return null;
 	}
 
 	private double verificarHoraExtra(LocalTime manhaEntrada, LocalTime manhaSaida, LocalTime tardeEntrada,
