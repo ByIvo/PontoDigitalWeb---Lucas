@@ -18,12 +18,14 @@ import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "contratos")
 @SQLDelete(sql = "UPDATE cargos SET deleted = 1 WHERE id = ?")
 @Where(clause = "deleted <> 1")
-public class Contrato extends Entidade {
-
+public class Contrato extends Entidade
+{
+	
 	/**
 	 * 
 	 */
@@ -32,25 +34,27 @@ public class Contrato extends Entidade {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
 	private Integer id;
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private double horasMensais;
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private double salario;
-	@Column(nullable=false)
+	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd-mm-yy")
 	private Date dataContrato;
 	@ManyToOne
-	@JoinColumn(name = "funcionario_id", referencedColumnName="id", nullable=false)
+	@JoinColumn(name = "funcionario_id", referencedColumnName = "id", nullable = false)
 	private Funcionario funcionario;
 	@Column
 	@JsonIgnore
 	private boolean deleted = false;
-
-	public Contrato() {
+	
+	public Contrato()
+	{
 	}
-
-	public Contrato(Integer id, double horasMensais, double salario, Date dataContrato, Funcionario funcionario) {
+	
+	public Contrato(Integer id, double horasMensais, double salario, Date dataContrato, Funcionario funcionario)
+	{
 		super();
 		this.id = id;
 		this.horasMensais = horasMensais;
@@ -58,68 +62,81 @@ public class Contrato extends Entidade {
 		this.dataContrato = dataContrato;
 		this.funcionario = funcionario;
 	}
-
-	public Contrato(Integer id) {
+	
+	public Contrato(Integer id)
+	{
 		super();
 		this.id = id;
 	}
-
+	
 	@Override
-	public Integer getId() {
+	public Integer getId()
+	{
 		return id;
 	}
-
+	
 	@Override
-	public void setId(Integer id) {
+	public void setId(Integer id)
+	{
 		this.id = id;
 	}
-
+	
 	@Override
-	public boolean isDeleted() {
+	public boolean isDeleted()
+	{
 		return deleted;
 	}
-
+	
 	@Override
-	public void setDeleted(boolean deleted) {
+	public void setDeleted(boolean deleted)
+	{
 		this.deleted = deleted;
 	}
-
-	public double getHorasMensais() {
+	
+	public double getHorasMensais()
+	{
 		return horasMensais;
 	}
-
-	public void setHorasMensais(double horasMensais) {
+	
+	public void setHorasMensais(double horasMensais)
+	{
 		this.horasMensais = horasMensais;
 	}
-
-	public double getSalario() {
+	
+	public double getSalario()
+	{
 		return salario;
 	}
-
-	public void setSalario(double salario) {
+	
+	public void setSalario(double salario)
+	{
 		this.salario = salario;
 	}
-
-	public Date getDataContrato() {
+	
+	public Date getDataContrato()
+	{
 		return dataContrato;
 	}
-
-	public void setDataContrato(Date dataContrato) {
+	
+	public void setDataContrato(Date dataContrato)
+	{
 		this.dataContrato = dataContrato;
 	}
-
-	public Funcionario getFuncionario() {
+	
+	public Funcionario getFuncionario()
+	{
 		return funcionario;
 	}
-
-	public void setFuncionario(Funcionario funcionario) {
+	
+	public void setFuncionario(Funcionario funcionario)
+	{
 		this.funcionario = funcionario;
 	}
-
+	
 	@Override
-	public String toString() {
-		return "Contrato [id=" + id + ", horasMensais=" + horasMensais + ", salario=" + salario + ", dataContrato="
-				+ dataContrato + ", funcionario=" + funcionario + "]";
+	public String toString()
+	{
+		return "Contrato [id=" + id + ", horasMensais=" + horasMensais + ", salario=" + salario + ", dataContrato=" + dataContrato + ", funcionario=" + funcionario + "]";
 	}
-
+	
 }

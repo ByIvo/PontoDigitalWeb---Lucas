@@ -6,10 +6,10 @@ var app = {
 
 		$(document).ajaxStart(app.openModal);
 		$(document).ajaxComplete(app.closeModal);
-		
+
 		Handlebars.registerHelper('viewBoolean', function(bool) {
-			  return bool ? "SIM" : "NÃO";
-			});
+			return bool ? "SIM" : "NÃO";
+		});
 	},
 
 	validateForm : function(form, errorClass, rules, messages, submitHandler) {
@@ -32,7 +32,7 @@ var app = {
 	findEntity : function(path, success, error) {
 		app.defaultAjaxCall(path, 'GET', {}, success, error);
 	},
-	
+
 	passId : function(path, success, error) {
 		app.defaultAjaxCall(path, 'GET', {}, success, error);
 	},
@@ -134,16 +134,16 @@ var app = {
 				});
 		return vars;
 	},
-	
-	addOptionsByName: function(option, values) {
+
+	addOptionsByName : function(option, values) {
 		var joption = $(option);
-		
-		for(var i=0; i < values.length; i++) {
+
+		for (var i = 0; i < values.length; i++) {
 			var opt = document.createElement("OPTION");
-			
+
 			opt.value = values[i].id;
-			opt.innerHTML = values[i].name;
-			
+			opt.innerHTML = values[i].nome;
+
 			joption.append(opt);
 		}
 	}

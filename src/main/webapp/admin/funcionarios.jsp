@@ -49,7 +49,7 @@
 				<td class="nome">{{nome}}</td>
 				<td class="cpf">{{cpf}}</td>
 				<td class="rg">{{rg}}</td>
-				<td class="cargo">{{cargo}}</td>
+				<td class="cargo">{{cargo.nome}}</td>
 				<td class="options">
 					<a href="novo_ponto.jsp" class="btn btn-warning btn-sm" title="Novo Ponto"> 
 						<span class="glyphicon glyphicon-plus"></span>

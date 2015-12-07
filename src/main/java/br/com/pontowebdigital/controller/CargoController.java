@@ -22,7 +22,6 @@ public class CargoController
 	@Autowired
 	private CargoService service;
 	
-	@Secured("ROLE")
 	@ResponseBody
 	@RequestMapping(value="/",method = { RequestMethod.GET })
 	public List<Cargo> findAll()
@@ -30,7 +29,6 @@ public class CargoController
 		return service.findAll();
 	}
 	
-	@Secured("ROLE")
 	@ResponseBody
 	@RequestMapping(value="/", method = { RequestMethod.POST })
 	public Cargo addEntity(@ModelAttribute("cargo") Cargo entity)
