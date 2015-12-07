@@ -20,6 +20,13 @@ app.ponto = {
 			
 		})
 	},
+	
+	obterValores : function(id, data1, data2){
+		
+		
+	},
+	
+	
 
 	buildTable : function(list) {
 		var source = $("#data-table").html();
@@ -56,4 +63,4 @@ app.ponto = {
 	}
 }
 
-$(document).ready(app.ponto.init);
+//$(document).ready(app.ponto.init);

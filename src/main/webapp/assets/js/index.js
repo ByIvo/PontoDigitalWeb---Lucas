@@ -147,6 +147,6 @@ var app = {
 			joption.append(opt);
 		}
 	}
-};
+}
 
 $(document).ready(app.init);

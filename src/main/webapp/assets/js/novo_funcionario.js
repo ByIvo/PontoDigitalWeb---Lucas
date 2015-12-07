@@ -25,7 +25,7 @@ app.funcionario = {
 				setTimeout(function() {
 					$('.modal-backdrop').remove();
 				}, 500);
-			}
+			};
 
 			app.listEntity(listPath, allReady, error);
 		}
@@ -66,7 +66,10 @@ app.funcionario = {
 		var success = Function(response)
 		{
 			app
-		}
+					.showErrorMessage("Ocorreu um erro ao tentar salvar as alterações!");
+		};
+
+		app.addEntity(path, '#form', success, error);
 	},
 
 	prepareForm : function() {

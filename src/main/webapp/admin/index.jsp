@@ -16,6 +16,11 @@
 		<form id="form" class="form">
 			<input type="text" name="id" id="id" hidden="true" />
 			<div class="form-group">
+				<label for="funcionarioId">Funcionario ID:</label> <input type="text"
+					class="form-control" name="funcionario" id="funcionario"
+					placeholder="ID do Funcionario"/>
+			</div>
+			<div class="form-group">
 				<label for="entrada">Data de Entrada:</label> <input type="time"
 					class="form-control" name="entrada" id="entrada"
 					placeholder="Data de Entrada" readonly />
@@ -26,13 +31,16 @@
 					class="form-control" name="saida" id="saida"
 					placeholder="Data de Saída" readonly />
 			</div>
-
+			<div class="form-group">
+				<button class="btn btn-primary" name="send" id="send">
+					Registrar</button>
+			</div>
 		</form>
 	</div>
 </div>
 
 <%@include file="models/scripts.jsp"%>
-<script src="../assets/js/novo_ponto.js"></script>
+<script src="../assets/js/index_f.js"></script>
 <%@include file="models/final_page.jsp"%>
 
 

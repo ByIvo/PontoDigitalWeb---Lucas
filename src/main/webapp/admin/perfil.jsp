@@ -7,8 +7,7 @@
 	<h1 class="text-center">Perfil</h1>
 	<ol class="breadcrumb">
 		<li><a href="index.jsp">Home</a></li>
-		<li><a href="funcionarios.jsp">Perfil</a></li>
-		<li class="active">Cadastro</li>
+		<li class="active">Perfil</li> 
 	</ol>
 </div>
 

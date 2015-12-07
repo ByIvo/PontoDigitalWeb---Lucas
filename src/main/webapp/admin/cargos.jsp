@@ -7,7 +7,7 @@
 	<h1 class="text-center">Listagem de Cargos</h1>
 
 	<ol class="breadcrumb">
-		<li><a href="index.jsp">Home</a></li>
+		<li><a href="index_admin.jsp">Home</a></li>
 		<li class="active">Cargos</li>
 	</ol>
 </div>
@@ -24,9 +24,6 @@
 			class="data-table table table-striped table-hover table-bordered">
 		</table>
 
-		<div class="col-sm-12 text-center">
-			<a href="index.jsp" class="col-sm-12 btn btn-default">Voltar</a>
-		</div>
 	</div>
 </div>
 

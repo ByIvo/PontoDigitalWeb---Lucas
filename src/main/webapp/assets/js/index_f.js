@@ -8,14 +8,38 @@ app.ponto = {
 
 	},
 
-	findEntity : function(id) {
-		var success = this.fillForm;
+	findPontoByFuncionarioId : function(funcionarioId) {
+		var success = this.fillPonto;
 
 		var error = function(e) {
 			app.showErrorMessage("Não foi possivel iniciar a edição!");
 		};
 
 		app.findEntity(path + id, success, error);
+
+	},
+	
+	salvar : function(){
+		var success = function(response) {
+			app.prepareSuccessMessage('Cadastrado com sucesso!');
+			app.ponto.back();
+		};
+
+		var error = function(e) {
+			app
+					.showErrorMessage("Ocorreu um erro ao tentar salvar as alterações!");
+		};
+
+		app.addEntity(path, '#form', success, error);
+	},
+	
+	fillPonto : function(entity) {
+		var form = $('#form')[0];
+		if (entity){
+				form.id.value = entity.id;
+				form.entrada.value = entity.entrada;
+				form.saida.value = entity.saida;			
+		}
 	},
 
 	add : function() {
@@ -34,18 +58,13 @@ app.ponto = {
 
 	prepareForm : function() {
 		var rules = {
-			entrada : {
+			funcionario : {
 				required : true
-			},
-
-			saida : {
-				required : true,
 			}
 		};
 
 		var messages = {
-			entrada : 'Campo obrigatório!',
-			saida : 'Campo obrigatório!'
+			funcionario : 'Campo obrigatório!',
 		};
 
 		app.validateForm('#form', 'invalidField', rules, messages, this.add);
@@ -53,6 +72,15 @@ app.ponto = {
 
 	prepareCancelButton : function() {
 		$('#backButton').click(app.ponto.back);
+	},
+
+	findPontoByFuncionario : function(path, success, error) {
+		var success = this.fillForm;
+
+		var error = function(e) {
+			app.showErrorMessage("Não foi possivel iniciar a edição!");
+		};
+		app.findEntity(path + id, success, error);
 	},
 
 	back : function() {
@@ -69,15 +97,12 @@ app.ponto = {
 
 	fillForm : function(entity) {
 		var form = $('#form')[0];
-		var e = new Date(entity.entrada).toUTCString();
-		var s = new Date(entity.saida).toUTCString();
-
 		if (entity) {
 			form.id.value = entity.id;
-			form.funcionario.id.value = entity.funcionario.id;
-			form.funcionario.nome.value = entity.funcionario.nome;
-			form.entrada.value = e;
-			form.saida.value = s;
+			form.funcionario.value = entity.funcionario.id;
+			form.funcionario.value = entity.funcionario.nome;
+			form.entrada.value = entity.entrada;
+			form.saida.value = entity.saida;
 		}
 	}
 }
