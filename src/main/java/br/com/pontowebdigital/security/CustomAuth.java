@@ -19,18 +19,18 @@ public class CustomAuth implements AuthenticationProvider
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException
 	{
-		String email = (String) authentication.getPrincipal();
+		String login = (String) authentication.getPrincipal();
 		String password = (String) authentication.getCredentials();
 		
-		/*if (email.isEmpty() || password.isEmpty())
+		if (login.isEmpty() || password.isEmpty())
 		{
 			throw new BadCredentialsException("Invalid username/password");
-		}*/
+		}
 		
 		Funcionario funcionario = new Funcionario();
 		
-		// funcionario = service.makeLogin(email, password);
-		return new UsernamePasswordAuthenticationToken(email, password);
+		funcionario = service.makeLogin(login, password);
+		return new UsernamePasswordAuthenticationToken(login, password);
 	}
 	
 	@Override

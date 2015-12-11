@@ -19,6 +19,7 @@ public class AjaxAuthSucessHandler implements AuthenticationSuccessHandler
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication auth) throws IOException, ServletException
 	{
 		
+		
 		AuthResponse ajaxResponse = new AuthResponse("admin/index.jsp", HttpStatus.OK);
 		
 		response.setContentType("application/json");

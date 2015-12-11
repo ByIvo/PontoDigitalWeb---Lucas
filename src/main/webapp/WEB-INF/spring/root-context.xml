@@ -56,51 +56,51 @@
 	
 	<!-- Spring Security -->
 
-<!-- 		<security:global-method-security -->
-<!-- 			secured-annotations="enabled" /> -->
+		<security:global-method-security
+			secured-annotations="enabled" />
 
-<!-- 		<security:http auto-config="false" create-session="ifRequired"> -->
+		<security:http auto-config="false" create-session="ifRequired">
 			<!-- Allow login page -->
-<!-- 			<security:intercept-url pattern="/index*" -->
-<!-- 				access="IS_AUTHENTICATED_ANONYMOUSLY" /> -->
+			<security:intercept-url pattern="/login*"
+				access="IS_AUTHENTICATED_ANONYMOUSLY" />
 
 			<!-- Allow static content -->
-<!-- 			<security:intercept-url pattern="/assets/**" -->
-<!-- 				access="IS_AUTHENTICATED_ANONYMOUSLY" /> -->
+			<security:intercept-url pattern="/assets/**"
+				access="IS_AUTHENTICATED_ANONYMOUSLY" />
 
 			<!-- Protected Pages -->
-<!-- 			<security:intercept-url pattern="/asdasd/*" -->
-<!-- 				access="ROLE_LOGED" /> -->
+			<security:intercept-url pattern="/admin/*"	access="ROLE_ADMIN" />
+			<security:intercept-url pattern="/user/*"	access="ROLE_FUNCIONARIO" />
 
 			<!-- Spring security entry point in case of error default-target-url="/admin/index.jsp" -->
-<!-- 			<security:form-login authentication-failure-url="/401.jsp" -->
-<!-- 				login-page="/index.jsp" login-processing-url="/login" -->
-<!-- 				authentication-success-handler-ref="successHandler" /> -->
+			<security:form-login authentication-failure-url="/401.jsp"
+				login-page="/login.jsp" login-processing-url="/login"
+				authentication-success-handler-ref="successHandler" />
 
 			<!-- Logout url -->
-<!-- 			<security:logout invalidate-session="true" -->
-<!-- 				logout-url="/logout" success-handler-ref="customLogout" /> -->
-<!-- 		</security:http> -->
+			<security:logout invalidate-session="true"
+				logout-url="/logout" success-handler-ref="customLogout" />
+		</security:http>
 
-<!-- 		<bean id="successHandler" -->
-<!-- 			class="br.com.pontowebdigital.security.AjaxAuthSucessHandler" /> -->
+		<bean id="successHandler"
+			class="br.com.pontowebdigital.security.AjaxAuthSucessHandler" />
 
-<!-- 		<bean id="customLogout" class="br.com.pontowebdigital.security.CustomLogout" /> -->
+		<bean id="customLogout" class="br.com.pontowebdigital.security.CustomLogout" />
 
 		<!-- This is where the login process happens -->
-<!-- 		<security:authentication-manager> -->
-<!-- 			<security:authentication-provider -->
-<!-- 				ref="customAuthenticationProvider"></security:authentication-provider> -->
-<!-- 		</security:authentication-manager> -->
+		<security:authentication-manager>
+			<security:authentication-provider
+				ref="customAuthenticationProvider"></security:authentication-provider>
+		</security:authentication-manager>
 
-<!-- 		<bean id="customAuthenticationProvider" class="br.com.pontowebdigital.security.CustomAuth" /> -->
+		<bean id="customAuthenticationProvider" class="br.com.pontowebdigital.security.CustomAuth" />
 
 		<!-- Changing default "j_username" and "j_password" field names -->
-<!-- 		<bean id="userPassAuthFilterBeanPostProcessor" -->
-<!-- 			class="br.com.pontowebdigital.security.UserPassAuthFilterBeanPostProcessor"> -->
-<!-- 			<property name="usernameParameter" value="login" /> -->
-<!-- 			<property name="passwordParameter" value="senha" /> -->
-<!-- 		</bean> -->
+		<bean id="userPassAuthFilterBeanPostProcessor"
+			class="br.com.pontowebdigital.security.UserPassAuthFilterBeanPostProcessor">
+			<property name="usernameParameter" value="login" />
+			<property name="passwordParameter" value="senha" />
+		</bean>
 	
 
 	<!-- Converters (USAR SELECT BOX COM FILL AUTOMATICO) -->

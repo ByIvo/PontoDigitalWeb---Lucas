@@ -1,20 +1,16 @@
-var path = 'funcionarios/';
+var path = 'login';
 
 app.login = {
 	init : function() {
 		app.login.prepareloginButton();
-		},
-
-		// passID : function(id) {
-		// var success = function(response){
-		// app.passID("pontos/new/"+id, success, error);
-		// }
-	prepareloginButton: function() {
-		$('#loginButton').click(app.login.login); 
 	},
-	
+
+	prepareloginButton : function() {
+		$('#loginButton').click(app.login.login);
+	},
+
 	login : function(path, success, error) {
-		app.defaultAjaxCall(path, 'GET', {}, success, error);
+		app.defaultAjaxCall(path + login + senha, 'POST', $('#form').serialize, success, error);
 	},
 }
 

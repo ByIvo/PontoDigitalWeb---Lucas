@@ -55,7 +55,7 @@
 					</a>
 				</td>							
 				<td class="options">
-					<a href="novo_ponto.jsp?e={{id}}" class="btn btn-warning btn-sm" title="Alterar">
+					<a href="novo_ponto.jsp?e={{id}}" class="btn btn-warning btn-sm" title="Editar Ponto">
 						<span class="glyphicon glyphicon-edit"></span>
 					</a>
 

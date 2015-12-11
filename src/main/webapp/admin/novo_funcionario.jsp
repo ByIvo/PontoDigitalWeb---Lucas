@@ -6,8 +6,7 @@
 <div class="page-header">
 	<h1 class="text-center">Cadastro de Funcionários</h1>
 	<ol class="breadcrumb">
-		<li><a href="index.jsp">Home</a></li>
-		<li><a href="funcionarios.jsp">Funcionários</a></li>
+		<li><a href="index.jsp">Funcionários</a></li>
 		<li class="active">Cadastro</li>
 	</ol>
 </div>

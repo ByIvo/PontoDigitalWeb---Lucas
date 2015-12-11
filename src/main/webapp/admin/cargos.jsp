@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="models/start_page.jsp"%>
-<%@include file="models/header_admin.jsp"%>
+<%@include file="models/header.jsp"%>
 
 <div class="page-header">
 	<h1 class="text-center">Listagem de Cargos</h1>

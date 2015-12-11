@@ -57,4 +57,9 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 		return dao.findFuncionario(id);
 	}
 
+	@Override
+	public Funcionario makeLogin(String login, String senha) {
+		return dao.makeLogin(login, senha);
+	}
+
 }

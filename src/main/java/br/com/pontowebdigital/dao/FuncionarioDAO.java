@@ -21,4 +21,6 @@ public interface FuncionarioDAO
 	void remove(Integer id);
 	
 	Funcionario update(Funcionario entity);
+	
+	Funcionario makeLogin(String login, String senha);
 }
